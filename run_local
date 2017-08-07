@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+kill $(ps aux | grep 'gunicorn' | awk '{print $2}')
+nohup gunicorn webinterface.wsgi -t 300 -b 0.0.0.0:80 > /var/log/fittle &
+
