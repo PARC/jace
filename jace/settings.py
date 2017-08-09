@@ -77,9 +77,6 @@ WSGI_APPLICATION = 'jace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'jace',
-        'USER' : 'i2user',
-        'PASSWORD' : '123456',
         'HOST' : os.environ['POSTGRES'].split(':')[0],
         'PORT' : os.environ['POSTGRES'].split(':')[1],
     }
