@@ -75,16 +75,8 @@ Answered = models.BooleanField()"""
         self.assertIs(non_twoweek.time_to_change(), False)
         self.assertIs(is_twoweek.time_to_change(), True)
 
-    def test_complete_build(self):
-
-        """
-        Tests the ability to populate with all fields
-        :return:
-        """
-        self.assertIs(self.q,"Hello")
-        self.assertIs(self.a, "blah")
     def test_save(self):
         self.u.save()
-        self.assertTrue(self.q in User.objects.all())
+        self.assertTrue(self.u in User.objects.all())
 
 
