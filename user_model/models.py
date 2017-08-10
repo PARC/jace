@@ -46,7 +46,7 @@ class Intervention(models.Model):
     Is_On = models.BooleanField()
     startdate = models.IntegerField()
 
-    def __str__(self):
+    def __repr__(self):
         return self.Name
 
 
@@ -57,7 +57,7 @@ class Survey(models.Model):
     Name = models.CharField(max_length=UUID_FIELD)
     Reference_to_Intervention = models.ForeignKey(Intervention)
 
-    def __str__(self):
+    def __repr__(self):
         return self.Names
 
 
@@ -82,7 +82,7 @@ class Question(models.Model):
     Sequence = models.IntegerField()
     Name = models.CharField(max_length=UUID_FIELD)
 
-    def __str__(self):
+    def __repr__(self):
         return self.tag
 
 
@@ -98,7 +98,7 @@ class Answer(models.Model):
     Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
     Answered = models.BooleanField()
 
-    def __str__(self):
+    def __repr__(self):
         return self.Answer_text
 
 
