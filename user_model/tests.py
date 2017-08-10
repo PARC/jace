@@ -21,6 +21,7 @@ class QuestionModelTests(TestCase):
                                startdate=0,Days_since_start=14,Days_since_last_report=2)
         self.assertIs(non_twoweek.time_to_change(), False)
         self.assertIs(is_twoweek.time_to_change(), True)
+
     def test_complete_build(self):
 
 

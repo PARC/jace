@@ -1,18 +1,17 @@
-from __future__ import unicode_literals
+
 from django.db import models
 # Create your models here.
 from django.db import models
 import datetime
 from django.utils import timezone
 
-from django.utils.encoding import python_2_unicode_compatible
 UUID_FIELD = 36
 SHORT_LENGTH = 200
 MEDIUM_LENGTH = 1024
 LONG_LENGTH = 2048
 
 
-@python_2_unicode_compatible
+
 class User(models.Model):
     identifier = models.CharField(max_length=UUID_FIELD)
     language = models.CharField(max_length=UUID_FIELD)
