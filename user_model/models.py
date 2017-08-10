@@ -10,6 +10,27 @@ SHORT_LENGTH = 200
 MEDIUM_LENGTH = 1024
 LONG_LENGTH = 2048
 
+class User(models.Model):
+    identifier = models.CharField(max_length=UUID_FIELD)
+    language = models.CharField(max_length=UUID_FIELD)
+    uuid = models.CharField(max_length=UUID_FIELD)
+    timestamp = models.DateTimeField()
+    deletedIndicator = models.BooleanField()
+    startdate = models.IntegerField()
+    Days_since_start = models.IntegerField()
+    Days_since_last_report = models.IntegerField()
+
+    def __str__(self):
+        return self.identifier
+
+    def time_to_change(self):
+        try:
+            if int(self.Days_since_start) % 14 == 0:
+                return True
+            else:
+                return False
+        except TypeError:
+            return "Was Expecting an Integer"
 
 class Intervention(models.Model):
     uuid = models.CharField(max_length=UUID_FIELD)
@@ -49,7 +70,7 @@ class Question(models.Model):
     reminders = models.BooleanField()
     askDate = models.IntegerField()
     askTime = models.TimeField()
-    preferenceToSet = models.CharField(max_length=MEDIUM_LENGTH)
+    preferenceToSet = models.CharField(max_length=MEDIUM_LENGTH,blank=True)
     answers = models.CharField(max_length=MEDIUM_LENGTH)
     expireDate = models.IntegerField()
     expireTime = models.TimeField()
@@ -61,27 +82,7 @@ class Question(models.Model):
         return self.tag
 
 
-class User(models.Model):
-    identifier = models.CharField(max_length=UUID_FIELD)
-    language = models.CharField(max_length=UUID_FIELD)
-    uuid = models.CharField(max_length=UUID_FIELD)
-    timestamp = models.DateTimeField()
-    deletedIndicator = models.BooleanField()
-    startdate = models.IntegerField()
-    Days_since_start = models.IntegerField()
-    Days_since_last_report = models.IntegerField()
 
-    def __str__(self):
-        return self.identifier
-
-    def time_to_change(self):
-        try:
-            if int(self.Days_since_start) % 14 == 0:
-                return True
-            else:
-                return False
-        except TypeError:
-            return "Was Expecting an Integer"
 
 
 class Answer(models.Model):
