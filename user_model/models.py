@@ -5,7 +5,7 @@ from django.db import models
 import datetime
 from django.utils import timezone
 
-UUID_FIELD = 3
+UUID_FIELD = 36
 SHORT_LENGTH = 200
 MEDIUM_LENGTH = 1024
 LONG_LENGTH = 2048
