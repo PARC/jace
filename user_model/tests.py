@@ -64,6 +64,7 @@ Answered = models.BooleanField()"""
     a = Answer(uuid="9872", timestamp=timezone.now(), question=q, user=u, Answer_text="blah", Answered=True)
 
     def test_modulo(self):
+        print("testing Modulo")
         """
         tests if given a date that is not every two weeks it returns false
         """
@@ -76,6 +77,7 @@ Answered = models.BooleanField()"""
         self.assertIs(is_twoweek.time_to_change(), True)
 
     def test_save(self):
+        print("testing Save")
         """
         tests if item is saved
         :return:
@@ -85,6 +87,7 @@ Answered = models.BooleanField()"""
         self.assertTrue(self.u in User.objects.all())
 
     def test_delete(self):
+        print("testing delete")
         """
         tests if item is deleted
         :return:
