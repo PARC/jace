@@ -23,7 +23,7 @@ class User(models.Model):
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
 
-    def __str__(self):
+    def __repr__(self):
         return str(self.identifier)
 
 
