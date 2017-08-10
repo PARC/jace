@@ -21,7 +21,7 @@ class User(models.Model):
     Days_since_last_report = models.IntegerField()
 
     def __str__(self):
-        return ("{}".format(self.identifier))
+        return str(User.identifier)
 
 
     def time_to_change(self):
