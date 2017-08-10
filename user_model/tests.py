@@ -81,5 +81,5 @@ class QuestionModelTests(TestCase):
         a = Answer(uuid="9872",timestamp=timezone.now(),question=q,user=u,Answer_text="blah",Answered=True)
 
         self.assertIs(str(q),"Hello")
-        self.assertIs(str(a), "Blah")
+        self.assertIs(str(a), "blah")
 
