@@ -20,11 +20,8 @@ class User(models.Model):
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
 
-    def __repr__(self):
-        return self.__str__
-
     def __str__(self):
-        return self.identifier
+        return ("{}".format(self.identifier))
 
 
     def time_to_change(self):
