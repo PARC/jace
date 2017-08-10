@@ -19,7 +19,9 @@ class User(models.Model):
     startdate = models.IntegerField()
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
-    __repr__ = __str__
+
+    def __repr__(self):
+        return self.__str__
 
     def __str__(self):
         return self.identifier
