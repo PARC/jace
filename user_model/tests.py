@@ -28,7 +28,7 @@ class QuestionModelTests(TestCase):
                                startdate=0,Days_since_start=14,Days_since_last_report=2)
 
 
-        i = Intervention(uuid="1234567",timestamp = timezone.now(),deleted_indicator = False,Name = "II",
+        i = Intervention(uuid="1234567",timestamp = timezone.now(),deletedIndicator = False,Name = "II",
                          Intervention_type ="Implemntation",Setup_Complete=False,Is_On = False,startdate=1)
 
 
