@@ -81,8 +81,8 @@ Answered = models.BooleanField()"""
         Tests the ability to populate with all fields
         :return:
         """
-        self.assertIs(str(self.q),"Hello")
-        self.assertIs(str(self.a), "blah")
+        self.assertIs(self.q,"Hello")
+        self.assertIs(self.a, "blah")
     def test_save(self):
         self.u.save()
         self.assertIs(User.objects.all(),'Joel')
