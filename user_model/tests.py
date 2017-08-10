@@ -85,6 +85,6 @@ Answered = models.BooleanField()"""
         self.assertIs(self.a, "blah")
     def test_save(self):
         self.u.save()
-        self.assertIs(User.objects.all(),'Joel')
+        self.assertTrue(q is in User.objects.all())
 
 
