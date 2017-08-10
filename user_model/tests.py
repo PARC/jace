@@ -89,6 +89,7 @@ Answered = models.BooleanField()"""
         tests if item is deleted
         :return:
         """
+        self.u.save()
         self.u.delete()
         self.assertFalse(self.u in User.objects.all())
 
