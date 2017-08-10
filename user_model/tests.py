@@ -24,8 +24,7 @@ class QuestionModelTests(TestCase):
     def test_complete_build(self):
 
 
-        u = User(identifier="Joel",language="ENG",uuid="12345",timestamp=timezone.now(),deletedIndicator=False,
-                               startdate=0,Days_since_start=14,Days_since_last_report=2)
+        u = User(identifier="Joel",language="ENG",uuid="12345",timestamp=timezone.now(),deletedIndicator=False,startdate=0,Days_since_start=14,Days_since_last_report=2)
 
 
         i = Intervention(uuid="1234567",timestamp = timezone.now(),deletedIndicator = False,Name = "II",
