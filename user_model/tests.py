@@ -29,7 +29,7 @@ class QuestionModelTests(TestCase):
 
 
         i = Intervention(uuid="1234567",timestamp = timezone.now(),deletedIndicator = False,Name = "II",
-                         Intervention_type ="Implemntation",Setup_Complete=False,Is_On = False,startdate=1)
+                         Intervention_Type ="Implemntation",Setup_Complete=False,Is_On = False,startdate=1)
 
 
         """
