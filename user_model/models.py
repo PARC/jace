@@ -87,8 +87,8 @@ class Question(models.Model):
 
 class Answer(models.Model):
     uuid = models.CharField(max_length=UUID_FIELD)
-    timestamp = models.DateTimeField
-    deletedIndicator = models.BooleanField
+    timestamp = models.DateTimeField()
+    deletedIndicator = models.BooleanField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
