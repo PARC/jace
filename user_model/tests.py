@@ -80,6 +80,6 @@ class QuestionModelTests(TestCase):
     Answered = models.BooleanField()"""
         a = Answer(uuid="9872",timestamp=timezone.now(),question=q,user=u,Answer_text="blah",Answered=True)
 
-        self.assertIs(q,"Hello World")
+        self.assertIs(q,"Hello")
         self.assertIs(a, "blah")
 
