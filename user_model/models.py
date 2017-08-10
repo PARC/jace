@@ -19,9 +19,11 @@ class User(models.Model):
     startdate = models.IntegerField()
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
+    __reper__ = __str__
 
     def __str__(self):
         return self.identifier
+
 
     def time_to_change(self):
         try:
@@ -31,6 +33,7 @@ class User(models.Model):
                 return False
         except TypeError:
             return "Was Expecting an Integer"
+
 
 class Intervention(models.Model):
     uuid = models.CharField(max_length=UUID_FIELD)
