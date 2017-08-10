@@ -20,4 +20,4 @@ class QuestionModelTests(TestCase):
         is_twoweek = User(identifier="Joel",language="ENG",uuid="12345",timestamp=timezone.now(),deletedIndicator=False,
                                startdate=0,Days_since_start=14,Days_since_last_report=2)
         self.assertIs(non_twoweek.was_published_recently(), False)
-        self.assertIs(non_twoweek.was_published_recently(), True)
+        self.assertIs(is_twoweek.was_published_recently(), True)
