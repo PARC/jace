@@ -76,7 +76,20 @@ Answered = models.BooleanField()"""
         self.assertIs(is_twoweek.time_to_change(), True)
 
     def test_save(self):
+        """
+        tests if item is saved
+        :return:
+        """
         self.u.save()
         self.assertTrue(self.u in User.objects.all())
+
+    def test_delete(self):
+        """
+        tests if item is deleted
+        :return:
+        """
+        self.u.delete()
+        self.assertFalse(self.u in User.objects.all())
+
 
 
