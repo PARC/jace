@@ -1,22 +1,7 @@
-import redis
-from durable.lang import *
-import random
-import question_builder2 as QB2
-from django.db import models
-import time
 import os
 
-
-base_instruction = "Research shows that  having a positive self-image is important to making healthy lifestyle changes"
-selfaff_eat2 = "I’m going to ask you to use a tool called a {kind} for the eat slower program"
-selfaff_eat3 = "Here’s how it works. A  {description} "
-selfaff_eat4 = "Use a {kind} in situations that diminishes your motivation or threatens your self-image"
-selfaff_eat5 = 'It helps to make tiny plans to do your {kind} using statements of the form: “IF situation' \
-           ' X is encountered THEN I will do a {kind}"'
-selfaff_eat6 = 'The “IF” part is a specific situation that  diminishes your motivation or threatens your self-image' \
-               ' The “THEN” part is  a specific {kind}'
-quest_list = [base_instruction,selfaff_eat2,selfaff_eat3,selfaff_eat4,selfaff_eat5,selfaff_eat6]
-
+import redis
+from durable.lang import *
 
 with ruleset('coach'):
 
@@ -47,5 +32,11 @@ with ruleset('coach'):
             host.post('coach',{"Rx_setup":False})
 
 if __name__ == '__main__':
+    """
+    This runs the program. Perhaps. copy over to API to start it for each case?
+
+
+    """
     redis.StrictRedis(port=os.environ['REDIS'].split(':')[1]).flushall()
-    run_all([{'REDIS': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}], port=os.environ['REDIS'].split(':')[1]);
+    run_all([{'REDIS': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],
+            port=os.environ['REDIS'].split(':')[1]);

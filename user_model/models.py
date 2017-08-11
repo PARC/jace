@@ -1,9 +1,5 @@
-
-from django.db import models
 # Create your models here.
 from django.db import models
-import datetime
-from django.utils import timezone
 
 UUID_FIELD = 36
 SHORT_LENGTH = 200
@@ -28,6 +24,12 @@ class User(models.Model):
 
     def __repr__(self):
         return str(self.identifier)
+
+    def to_dictionary(self):
+        return {"identifier": self.identifier, "language": self.language, "UUID": self.uuid,
+                'startdate': self.startdate,
+                "Days_since_Start": self.Days_since_start, "Last_report": self.Days_since_last_report,
+                "time_to_change": self.time_to_change()}
 
 
     def time_to_change(self):
@@ -56,6 +58,9 @@ class Intervention(models.Model):
 
     def __repr__(self):
         return self.Name
+
+    def to_dict(self):
+        return {"uuid": self.uuid, "name": self.Name, "InterventionType": self.Intervention_Type, "Is_On": self.Is_On}
 
 
 class Survey(models.Model):
