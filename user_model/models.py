@@ -13,6 +13,10 @@ LONG_LENGTH = 2048
 
 
 class User(models.Model):
+    """
+    The User's Model Representation
+
+    """
     identifier = models.CharField(max_length=UUID_FIELD)
     language = models.CharField(max_length=UUID_FIELD)
     uuid = models.CharField(max_length=UUID_FIELD)
@@ -27,6 +31,10 @@ class User(models.Model):
 
 
     def time_to_change(self):
+        """
+        Checks to see if the user is on a week break point to change JITAI
+        :return: Boolian Value
+        """
         try:
             if int(self.Days_since_start) % 14 == 0:
                 return True
