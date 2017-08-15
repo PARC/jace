@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^questions/(?P<pk>[0-9]+)/$', views.question_detail.as_view()),
     url(r'^answers/$', views.answer_list.as_view()),
     url(r'^answers/(?P<pk>[0-9]+)/$', views.answer_detail.as_view()),
-
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)

@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from communications.serializers import *
+from user_model.serializers import *
 
 
 class user_list(APIView):
