@@ -7,7 +7,7 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'id', 'indentifier', 'language', 'uuid', 'timestamp', 'deletedIndicator', "startdate", "Days_since_start",
+            'id', 'identifier', 'language', 'uuid', 'timestamp', 'deletedIndicator', "startdate", "Days_since_start",
             "Days_since_last_report",)
 
 

@@ -4,7 +4,7 @@ from communications import views
 
 urlpatterns = [
     url(r'^communications/users', views.user_list),
-    url(r'^communications/intervnetion', views.intervention_list),
+    url(r'^communications/intervention', views.intervention_list),
     url(r'^communications/surveys', views.survey_list),
     url(r'^communications/questions', views.question_list),
     url(r'^communications/answers', views.answer_list),

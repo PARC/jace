@@ -3,15 +3,14 @@
 # Create your tests here.
 import datetime
 
-from django.utils import timezone
 from django.test import TestCase
+from django.utils import timezone
 
 from .models import *
 
 class QuestionModelTests(TestCase):
     u = User(identifier="Joel", language="ENG", uuid="12345", timestamp=timezone.now(), deletedIndicator=False,
-             startdate=0,
-             Days_since_start=14, Days_since_last_report=2)
+             startdate=0, Days_since_start=14, Days_since_last_report=2)
 
     i = Intervention(uuid="1234567", timestamp=timezone.now(), deletedIndicator=False, Name="II",
                      Intervention_Type="Implemntation", Setup_Complete=False, Is_On=False, startdate=1)
