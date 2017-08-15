@@ -34,8 +34,6 @@ with ruleset('coach'):
 if __name__ == '__main__':
     """
     This runs the program. Perhaps. copy over to API to start it for each case?
-
-
     """
     redis.StrictRedis(port=os.environ['REDIS'].split(':')[1]).flushall()
     run_all([{'REDIS': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],
