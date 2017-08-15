@@ -24,7 +24,6 @@ class User(models.Model):
     startdate = models.IntegerField()
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
-    date_created = models.DateTimeField()
 
     def __repr__(self):
         return str(self.identifier)
@@ -47,6 +46,9 @@ class User(models.Model):
                 return False
         except TypeError:
             return "Was Expecting an Integer"
+
+    class Meta:
+        ordering = ('timestamp',)
 
 
 class Intervention(models.Model):
