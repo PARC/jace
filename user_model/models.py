@@ -15,7 +15,7 @@ class User(models.Model):
     """
     identifier = models.CharField(max_length=UUID_FIELD)
     language = models.CharField(max_length=UUID_FIELD)
-    uuid = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     startdate = models.IntegerField()
