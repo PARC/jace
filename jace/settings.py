@@ -89,7 +89,7 @@ DATABASES = {
         'NAME': 'jace',
         "USER": 'postgres',
         'PASSWORD':"",
-        'HOST': os.environ['POSTGRES'].split(':')[0],
+        'HOST': 'postgres',
         'PORT': os.environ['DOCKERPORT']
     }
 }
