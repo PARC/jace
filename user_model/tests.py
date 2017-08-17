@@ -84,7 +84,7 @@ Answered = models.BooleanField()"""
         :return:s
         """
         self.u.save()
-        self.assertTrue(type(self.u.id) is int)
+        self.assertTrue(type(self.u.uuid) is int)
         self.assertTrue(self.u in User.objects.all())
 
     def test_delete(self):
