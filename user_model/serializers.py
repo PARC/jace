@@ -7,28 +7,28 @@ class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = (
-            'id', 'identifier', 'language', 'uuid', 'timestamp', 'deletedIndicator', "startdate", "Days_since_start",
+            'identifier', 'language', 'UUID', 'timestamp', 'deletedIndicator', "startdate", "Days_since_start",
             "Days_since_last_report",)
 
 
 class InterventionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Intervention
-        fields = ('id', "uuid", "timestamo", "deletedIndicator", "Name", "Intervention_Type", "Setup_Complete", "Is_On",
+        fields = ("uuid", "timestamo", "deletedIndicator", "Name", "Intervention_Type", "Setup_Complete", "Is_On",
                   "startdate", "reference_to_user")
 
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
-        fields = ('id', "uuid", "timestamo", "deletedIndicator", "Name", "Reference_to_Intervention")
+        fields = ("UUID", "timestamo", "deletedIndicator", "Name", "Reference_to_Intervention")
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = (
-            'question_text', 'uuid', 'timestamp', 'deletedIndicator', 'responceType', 'responceTypeTime', 'tag',
+            'question_text', 'UUID', 'timestamp', 'deletedIndicator', 'responceType', 'responceTypeTime', 'tag',
             'choices',
             "referenceToSurvey", "reminders", "askDate", "askTime", "preferenceToSet", "answers", "expireDate",
             "expireTime",
