@@ -19,7 +19,8 @@ class Fittle_Report(models.Model):
     source = models.CharField(max_length=SHORT_LENGTH, primary_key=True),
     data = models.CharField(max_length=DBZ_LENGTH),
     shared = models.BooleanField(),
-    createdAt = models.CharField(max_length=SHORT_LENGTH)
+
+    # createdAt = models.CharField(max_length=SHORT_LENGTH)
 
     def __repr__(self):
         return str(self.source)

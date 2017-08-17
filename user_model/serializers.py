@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = (
             'identifier', 'language', 'UUID', 'timestamp', 'deletedIndicator', "startdate", "Days_since_start",
-            "Days_since_last_report",)
+            "Days_since_last_report")
 
 
 class InterventionSerializer(serializers.ModelSerializer):
