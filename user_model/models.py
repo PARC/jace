@@ -15,7 +15,7 @@ class User(models.Model):
     """
     identifier = models.CharField(max_length=UUID_FIELD)
     language = models.CharField(max_length=UUID_FIELD)
-    UUID = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     startdate = models.IntegerField()
@@ -26,7 +26,7 @@ class User(models.Model):
         return str(self.identifier)
 
     def to_dictionary(self):
-        return {"identifier": self.identifier, "language": self.language, "UUID": self.uuid,
+        return {"identifier": self.identifier, "language": self.language, "UUID": self.UUID,
                 'startdate': self.startdate,
                 "Days_since_Start": self.Days_since_start, "Last_report": self.Days_since_last_report,
                 "time_to_change": self.time_to_change()}
@@ -47,7 +47,7 @@ class User(models.Model):
 
 
 class Intervention(models.Model):
-    uuid = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     Name = models.CharField(max_length=UUID_FIELD)
@@ -60,11 +60,11 @@ class Intervention(models.Model):
         return self.Name
 
     def to_dict(self):
-        return {"uuid": self.uuid, "name": self.Name, "InterventionType": self.Intervention_Type, "Is_On": self.Is_On}
+        return {"UUID": self.UUID, "name": self.Name, "InterventionType": self.Intervention_Type, "Is_On": self.Is_On}
 
 
 class Survey(models.Model):
-    uuid = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     Name = models.CharField(max_length=UUID_FIELD)
@@ -76,7 +76,7 @@ class Survey(models.Model):
 
 class Question(models.Model):
     question_text = models.CharField(max_length=SHORT_LENGTH)
-    uuid = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     responceType = models.CharField(max_length=MEDIUM_LENGTH)
@@ -103,7 +103,7 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
-    uuid = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
