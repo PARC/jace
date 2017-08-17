@@ -12,7 +12,7 @@ class QuestionModelTests(TestCase):
     u = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
              startdate=0, Days_since_start=14, Days_since_last_report=2)
 
-    i = Intervention(uuid="1234567", timestamp=timezone.now(), deletedIndicator=False, Name="II",
+    i = Intervention(UUID="1234567", timestamp=timezone.now(), deletedIndicator=False, Name="II",
                      Intervention_Type="Implemntation", Setup_Complete=False, Is_On=False, startdate=1)
 
     """
@@ -22,7 +22,7 @@ deletedIndicator = models.BooleanField()
 Name = models.CharField(max_length=UUID_FIELD)
 Reference_to_Intervention = models.ForeignKey(Intervention)
     """
-    s = Survey(uuid="7711", timestamp=timezone.now(), deletedIndicator=False, Name="II1", Reference_to_Intervention=i)
+    s = Survey(UUID="7711", timestamp=timezone.now(), deletedIndicator=False, Name="II1", Reference_to_Intervention=i)
 
     """
     question_text = models.CharField(max_length=SHORT_LENGTH)
@@ -48,7 +48,7 @@ Name = models.CharField(max_length=UUID_FIELD)
 
 
     """
-    q = Question(question_text="Hello World", uuid="1771717", timestamp=timezone.now(), deletedIndicator=False,
+    q = Question(question_text="Hello World", UUID="1771717", timestamp=timezone.now(), deletedIndicator=False,
                  responceType="Ask Now", tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
                  askTime='10:00', answers="", expireDate="99", expireTime="11:00", Notify=True, Sequence=1,
                  Name="First")
@@ -60,7 +60,7 @@ question = models.ForeignKey(Question, on_delete=models.CASCADE)
 user = models.ForeignKey(User, on_delete=models.CASCADE)
 Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
 Answered = models.BooleanField()"""
-    a = Answer(uuid="9872", timestamp=timezone.now(), question=q, user=u, Answer_text="blah", Answered=True)
+    a = Answer(UUID="9872", timestamp=timezone.now(), question=q, user=u, Answer_text="blah", Answered=True)
 
     def test_modulo(self):
         print("testing Modulo")
