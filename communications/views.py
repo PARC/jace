@@ -17,7 +17,7 @@ class report_list(APIView):
     """
 
     def get(self, request, format=None):
-        reports = Fittle_Report.objects.all()
+        reports = FittleReport.objects.all()
         serializer = ReportSeriealizer(reports, many=True)
         return Response(serializer.data)
 
@@ -128,7 +128,7 @@ class ReportDetail(APIView):
 
     def get_object(self, pk):
         try:
-            return Fittle_Report.objects.get(pk=pk)
+            return FittleReport.objects.get(pk=pk)
         except User.DoesNotExist:
             raise Http404
 
