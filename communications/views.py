@@ -1,9 +1,6 @@
 # Create your views here.
 import redis
-from django.http import Http404
-from rest_framework import status
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework import generics
 
 from communications.seriealizers import *
 from user_model.serializers import *
@@ -11,291 +8,106 @@ from user_model.serializers import *
 r = redis.StrictRedis(host='localhost', port=32772, db=0)
 
 
-class report_list(APIView):
+class report_list(generics.ListCreateAPIView):
+    """
+    List all Reports, or create a new Report.
+    """
+    queryset = FittleReport.objects.all()
+    serializer_class = ReportSeriealizer
+
+
+class user_list(generics.ListCreateAPIView):
     """
     List all users, or create a new user.
     """
-
-    def get(self, request, format=None):
-        reports = FittleReport.objects.all()
-        serializer = ReportSeriealizer(reports, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = ReportSeriealizer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
-
-class user_list(APIView):
-    """
-    List all users, or create a new user.
-    """
-
-    def get(self, request, format=None):
-        user = User.objects.all()
-        serializer = UserSerializer(user, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = UserSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            r.hmset("User", serializer)
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class intervention_list(APIView):
+class intervention_list(generics.ListCreateAPIView):
     """
     List all Intervention, or create a new Intervention.
     """
 
-    def get(self, request, format=None):
-        intervention = Intervention.objects.all()
-        serializer = InterventionSerializer(intervention, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = InterventionSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Intervention.objects.all()
+    serializer_class = InterventionSerializer
 
 
-class survey_list(APIView):
+class survey_list(generics.ListCreateAPIView):
     """
     List all Surveys, or create a new Surveys.
     """
 
-    def get(self, request, format=None):
-        survey = Survey.objects.all()
-        serializer = SurveySerializer(survey, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = SurveySerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Survey.objects.all()
+    serializer_class = SurveySerializer
 
 
-class question_list(APIView):
+class question_list(generics.ListCreateAPIView):
     """
     List all Surveys, or create a new question.
     """
 
-    def get(self, request, format=None):
-        question = Question.objects.all()
-        serializer = QuestionSerializer(question, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = QuestionSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
 
-class answer_list(APIView):
+class answer_list(generics.ListCreateAPIView):
     """
     List all Surveys, or create a new answer.
     """
 
-    def get(self, request, format=None):
-        answer = Answer.objects.all()
-        serializer = AnswersSerializer(answer, many=True)
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = AnswersSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    queryset = Answer.objects.all()
+    serializer_class = AnswersSerializer
 
 
-class ReportDetail(APIView):
+class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a user.
+    """
+    queryset = FittleReport.objects.all()
+    serializer_class = ReportSeriealizer
+
+
+class user_detail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a user.
     """
 
-    def get_object(self, pk):
-        try:
-            return FittleReport.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        report = self.get_object(pk)
-        serializer = ReportSeriealizer(report)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        report = self.get_object(pk)
-        serializer = ReportSeriealizer(report, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        user = self.get_object(pk)
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
-class user_detail(APIView):
-    """
-    Retrieve, update or delete a user.
-    """
-
-    def get_object(self, pk):
-        try:
-            return User.objects.get(pk=pk)
-        except User.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = UserSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        user = self.get_object(pk)
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class Intervention_detail(APIView):
+class Intervention_detail(generics.RetrieveUpdateDestroyAPIView):
     """
        Retrieve, update or delete an intervnetion.
        """
 
-    def get_object(self, pk):
-        try:
-            return Intervention.objects.get(pk=pk)
-        except Intervention.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        intervention = self.get_object(pk)
-        serializer = InterventionSerializer(intervention)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        intervention = self.get_object(pk)
-        serializer = InterventionSerializer(intervention, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        intervention = self.get_object(pk)
-        intervention.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Intervention.objects.all()
+    serializer_class = InterventionSerializer
 
 
-class Survey_detail(APIView):
+class Survey_detail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a survey.
     """
 
-    def get_object(self, pk):
-        try:
-            return Survey.objects.get(pk=pk)
-        except Survey.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        survey = self.get_object(pk)
-        serializer = SurveySerializer(survey)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        survey = self.get_object(pk)
-        serializer = SurveySerializer(survey, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        survey = self.get_object(pk)
-        survey.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Survey.objects.all()
+    serializer_class = SurveySerializer
 
 
-class question_detail(APIView):
+class question_detail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a question.
     """
 
-    def get_object(self, pk):
-        try:
-            return Question.objects.get(pk=pk)
-        except Question.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        question = self.get_object(pk)
-        serializer = QuestionSerializer(question)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        question = self.get_object(pk)
-        serializer = QuestionSerializer(question, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        question = self.get_object(pk)
-        question.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
 
 
-class answer_detail(APIView):
+class answer_detail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a answer.
     """
 
-    def get_object(self, pk):
-        try:
-            return Answer.objects.get(pk=pk)
-        except Answer.DoesNotExist:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        answer = self.get_object(pk)
-        serializer = AnswersSerializer(answer)
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        answer = self.get_object(pk)
-        serializer = AnswersSerializer(answer, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        answer = self.get_object(pk)
-        answer.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    queryset = Answer.objects.all()
+    serializer_class = AnswersSerializer
