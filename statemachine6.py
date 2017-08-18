@@ -3,6 +3,7 @@ import os
 import redis
 from durable.lang import *
 
+from communications.outgoing import *
 with ruleset('coach'):
 
 
@@ -13,7 +14,7 @@ with ruleset('coach'):
         :return:
         """
         #todo send message to API to turn on each condition randomly
-        pass
+        question_to_server()
     @when_all(m.NO_responce_number >=3)
     def turn_on_reminders():
         """
@@ -21,7 +22,7 @@ with ruleset('coach'):
         :return:
         """
         #todo send message to API to turn on reminders
-        pass
+        question_to_server()
 
 
 

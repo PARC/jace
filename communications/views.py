@@ -62,7 +62,7 @@ class answer_list(generics.ListCreateAPIView):
 
 class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
     """
-    Retrieve, update or delete a user.
+    Retrieve, update or delete a report.
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer

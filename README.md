@@ -7,7 +7,11 @@ HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded pr
 
 # communications
     contains all programs invovled in the API
+   ##views.py
+      API GENERATION ENGINE
+   ##URLS.PY
+        REGEX URL LINKS FOR API
 
 
 # Transactions
-    Acts as a control system to tell the API when it should send.
+ 

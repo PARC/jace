@@ -14,12 +14,13 @@ DBZ_LENGTH = 32365
 
 
 class FittleReport(models.Model):
+    _id = models.CharField(max_length=UUID_FIELD)
     studyName = models.CharField(max_length=MEDIUM_LENGTH)
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     source = models.CharField(max_length=SHORT_LENGTH, primary_key=True)
     data = models.CharField(max_length=DBZ_LENGTH)
-    shared = models.BooleanField()
+    shared = models.CharField(max_length=DBZ_LENGTH)
     createdAt = models.CharField(max_length=SHORT_LENGTH)
 
     def __repr__(self):
-        return str(self.source)
+        return str(self._id)

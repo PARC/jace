@@ -6,4 +6,4 @@ from communications.models import *
 class ReportSeriealizer(serializers.ModelSerializer):
     class Meta:
         model = FittleReport
-        fields = ("studyName", "kind", "source", "data", "shared", "createdAt")
+        fields = ("_id", "studyName", "kind", "source", "data", "shared", "createdAt")
