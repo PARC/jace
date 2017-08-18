@@ -3,5 +3,11 @@ HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded pr
 
 
 # user_model
-    contains infromation on the user,questions, answers
+    contains Infromation on the user,questions, answers
 
+# communications
+    contains all programs invovled in the API
+
+
+# Transactions
+    Acts as a control system to tell the API when it should send.
