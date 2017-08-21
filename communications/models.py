@@ -15,7 +15,7 @@ DBZ_LENGTH = 32365
 
 
 class FittleReport(models.Model):
-    _id = models.CharField(max_length=UUID_FIELD, primary_key=True)
+    userId = models.CharField(max_length=UUID_FIELD, primary_key=True)
     studyName = models.CharField(max_length=MEDIUM_LENGTH)
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     source = models.CharField(max_length=SHORT_LENGTH)
