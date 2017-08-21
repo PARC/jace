@@ -1,20 +1,23 @@
 # Create your views here.
 import redis
 from rest_framework import generics
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
+from rest_framework.authtoken.models import Token
 
 from communications.seriealizers import *
 from user_model.serializers import *
 
 r = redis.StrictRedis(host='localhost', port=32772, db=0)
 
-
+token = Token.objects.create(user='root')
+print(token)
 class report_list(generics.ListCreateAPIView):
     """
     List all Reports, or create a new Report.
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
-
+    authentication_classes = (SessionAuthentication, BasicAuthentication, TokenAuthentication)
 
 class user_list(generics.ListCreateAPIView):
     """
