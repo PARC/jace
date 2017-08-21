@@ -1,7 +1,6 @@
 # Create your views here.
 import redis
 from rest_framework import generics
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication, TokenAuthentication
 
 from communications.seriealizers import *
 from user_model.serializers import *
@@ -15,7 +14,6 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
-    authentication_classes = (SessionAuthentication, BasicAuthentication, TokenAuthentication)
 
 
 class user_list(generics.ListCreateAPIView):
