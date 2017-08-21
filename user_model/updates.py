@@ -1,3 +1,4 @@
 from communications.models import *
 
-data = FittleReport.objects.all()
+for report in FittleReport.objects.all():
+    report.data

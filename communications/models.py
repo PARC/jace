@@ -20,7 +20,7 @@ class FittleReport(models.Model):
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     source = models.CharField(max_length=SHORT_LENGTH, primary_key=True)
     data = fields.JSONField()
-    shared = models.CharField(max_length=DBZ_LENGTH)
+    shared = fields.JSONField()
     createdAt = models.CharField(max_length=SHORT_LENGTH)
 
     def __repr__(self):
