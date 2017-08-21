@@ -14,8 +14,7 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
-    # authentication_classes = (SessionAuthentication, BasicAuthentication, TokenAuthentication)
-    # permission_classes = (IsAuthenticated)
+
 
 class user_list(generics.ListCreateAPIView):
     """
