@@ -5,7 +5,7 @@ from communications import views
 
 # (?P<token>.*)
 urlpatterns = [
-    url(r'^reports/$', views.report_list.as_view(), print(views.report_list.request)),
+    url(r'^reports/$', views.report_list.as_view()),
     url(r'^users/$', views.user_list.as_view()),
     url(r'^users/(?P<pk>[0-9]+)/$', views.user_detail.as_view()),
     url(r'^interventions/$', views.intervention_list.as_view()),
