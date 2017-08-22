@@ -12,8 +12,9 @@ class report_list(generics.ListCreateAPIView):
     """
     List all Reports, or create a new Report.
     """
-    queryset = FittleReport.objects.all()
-    serializer_class = DebugReportSeriealizer()
+    queryset = debugReport.objects.all()
+    serializer_class = DebugReportSeriealizer
+
 
 class user_list(generics.ListCreateAPIView):
     """
