@@ -14,6 +14,7 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
+    print(serializer_class.context)
 
 
 class user_list(generics.ListCreateAPIView):
