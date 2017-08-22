@@ -12,4 +12,4 @@ class ReportSeriealizer(serializers.ModelSerializer):
 class DebugReportSeriealizer(serializers.ModelSerializer):
     class Meta:
         model = debugReport
-        fields = ("data")
+        fields = "__all__"
