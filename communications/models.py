@@ -28,7 +28,10 @@ class FittleReport(models.Model):
 
 
 class debugReport(models.Model):
+    studyName = models.CharField(max_length=MEDIUM_LENGTH)
+    kind = models.CharField(max_length=MEDIUM_LENGTH)
     data = fields.JSONField()
     source = models.CharField(max_length=SHORT_LENGTH)
+    createdAt = models.CharField(max_length=SHORT_LENGTH)
     def __repr__(self):
         return str(self.data)
