@@ -16,7 +16,7 @@ class report_list(generics.ListCreateAPIView):
     serializer_class = ReportSeriealizer
 
     def post(self, request, *args, **kwargs):
-        return args
+        return kwargs
 
 
 
