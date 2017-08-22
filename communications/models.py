@@ -25,3 +25,10 @@ class FittleReport(models.Model):
 
     def __repr__(self):
         return str(self._id)
+
+
+class debugReport(models.Model):
+    data = fields.JSONField()
+
+    def __repr__(self):
+        return str(self.data)

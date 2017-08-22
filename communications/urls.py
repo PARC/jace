@@ -3,6 +3,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 from communications import views
 
+token = "42istheanswer"
 # (?P<token>.*)
 urlpatterns = [
     url(r'^reports/$', views.report_list.as_view()),
