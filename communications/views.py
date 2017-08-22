@@ -15,12 +15,6 @@ class report_list(generics.ListCreateAPIView):
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
 
-    def post(self, request, *args, **kwargs):
-        return kwargs
-
-
-
-
 
 class user_list(generics.ListCreateAPIView):
     """
