@@ -1,6 +1,7 @@
 # Create your views here.
 import redis
 from rest_framework import generics
+from rest_framework import request
 
 from communications.seriealizers import *
 from user_model.serializers import *
@@ -14,11 +15,9 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = FittleReport.objects.all()
     serializer_class = ReportSeriealizer
+    print(request.Request.data)
 
-    def reportonself(self):
-        print(generics.ListCreateAPIView.get_serializer_context(self))
 
-    reportonself()
 
 
 
