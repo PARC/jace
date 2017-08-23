@@ -7,7 +7,6 @@ MEDIUM_LENGTH = 1024
 LONG_LENGTH = 2048
 
 
-
 class User(models.Model):
     """
     The User's Model Representation
