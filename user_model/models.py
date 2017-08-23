@@ -18,6 +18,7 @@ class User(models.Model):
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
+    startdate = models.IntegerField()
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
 
@@ -26,6 +27,7 @@ class User(models.Model):
 
     def to_dictionary(self):
         return {"identifier": self.identifier, "language": self.language, "UUID": self.UUID,
+                'startdate': self.startdate,
                 "Days_since_Start": self.Days_since_start, "Last_report": self.Days_since_last_report,
                 "time_to_change": self.time_to_change()}
 
