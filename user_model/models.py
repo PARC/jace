@@ -18,7 +18,7 @@ class User(models.Model):
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
-    startdate = models.IntegerField()
+    startdate = models.DateTimeField()
     Days_since_start = models.IntegerField()
     Days_since_last_report = models.IntegerField()
 
