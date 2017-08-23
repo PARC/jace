@@ -25,7 +25,7 @@ Reference_to_Intervention = models.ForeignKey(Intervention)
     s = Survey(UUID="7711", timestamp=timezone.now(), deletedIndicator=False, Name="II1", Reference_to_Intervention=i)
 
     """
-    question_text = models.CharField(max_length=SHORT_LENGTH)
+    question_text = models.CharField(max_length=SHOzRT_LENGTH)
 uuid = models.CharField(max_length=UUID_FIELD)
 timestamp = models.DateTimeField()
 deletedIndicator = models.BooleanField()
