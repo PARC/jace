@@ -25,8 +25,8 @@ def update_all():
                     if name == "getDisplayName":
                         u = User(identifier=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
-                                 deletedindicator=False, startDate=createdat, days_since_start=0,
-                                 days_since_last_report=0)
+                                 deletedIndicator=False, startDate=createdat, Days_since_start=0,
+                                 Days_since_last_report=0)
                         u.save()
             except KeyError:
                 data = report.data
