@@ -1,9 +1,11 @@
 import os
+import random
 
 import redis
 from durable.lang import *
 
 from communications.outgoing import *
+
 with ruleset('coach'):
 
 
@@ -14,7 +16,12 @@ with ruleset('coach'):
         :return:
         """
         #todo send message to API to turn on each condition randomly
-        question_to_server()
+        question_to_server(
+            '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.selfAffirmation", "value":"{}"}'.format(
+                random.choice(["yes", "no"])))
+        question_to_server(
+            '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.implementationIntention", "value":"y{}"}'.format(
+                random.choice(["yes", "no"])))
     @when_all(m.NO_responce_number >=3)
     def turn_on_reminders():
         """
@@ -22,7 +29,9 @@ with ruleset('coach'):
         :return:
         """
         #todo send message to API to turn on reminders
-        question_to_server()
+        question_to_server(question_to_server(
+            '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.selfCompassion", "value":"y{}"}'.format(
+                random.choice(["yes", "no"]))))
 
 
 
