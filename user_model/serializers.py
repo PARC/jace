@@ -14,14 +14,14 @@ class UserSerializer(serializers.ModelSerializer):
 class InterventionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Intervention
-        fields = ("uuid", "timestamo", "deletedIndicator", "Name", "Intervention_Type", "Setup_Complete", "Is_On",
+        fields = ("uuid", "timestamp", "deletedIndicator", "Name", "Intervention_Type", "Setup_Complete", "Is_On",
                   "startdate", "reference_to_user")
 
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
-        fields = ("UUID", "timestamo", "deletedIndicator", "Name", "Reference_to_Intervention")
+        fields = ("UUID", "timestamp", "deletedIndicator", "Name", "Reference_to_Intervention")
 
 
 class QuestionSerializer(serializers.ModelSerializer):
