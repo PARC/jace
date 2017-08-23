@@ -26,7 +26,6 @@ class User(models.Model):
 
     def to_dictionary(self):
         return {"identifier": self.identifier, "language": self.language, "UUID": self.UUID,
-                'startdate': self.startdate,
                 "Days_since_Start": self.Days_since_start, "Last_report": self.Days_since_last_report,
                 "time_to_change": self.time_to_change()}
 

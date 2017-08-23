@@ -10,7 +10,7 @@ from .models import *
 
 class QuestionModelTests(TestCase):
     u = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
-             startdate=0, Days_since_start=14, Days_since_last_report=2)
+             Days_since_start=14, Days_since_last_report=2)
 
     i = Intervention(UUID="1234567", timestamp=timezone.now(), deletedIndicator=False, Name="II",
                      Intervention_Type="Implemntation", Setup_Complete=False, Is_On=False, startdate=1)
