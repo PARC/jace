@@ -69,11 +69,9 @@ Answered = models.BooleanField()"""
         """
         time = timezone.now() + datetime.timedelta(days=30)
         non_twoweek = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
-                           deletedIndicator=False,
-                           startdate=0, Days_since_start=17, Days_since_last_report=2)
+                           deletedIndicator=False, Days_since_start=17, Days_since_last_report=2)
         is_twoweek = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
-                          deletedIndicator=False,
-                          startdate=0, Days_since_start=14, Days_since_last_report=2)
+                          deletedIndicator=False, Days_since_start=14, Days_since_last_report=2)
         self.assertIs(non_twoweek.time_to_change(), False)
         self.assertIs(is_twoweek.time_to_change(), True)
 
