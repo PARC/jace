@@ -4,7 +4,6 @@ from rest_framework import generics
 
 from communications.seriealizers import *
 from user_model.serializers import *
-from user_model.updates import *
 
 r = redis.StrictRedis(host='localhost', port=32772, db=0)
 
@@ -15,7 +14,7 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = debugReport.objects.all()
     serializer_class = DebugReportSeriealizer
-    update_all()
+    # update_all()
 
 class user_list(generics.ListCreateAPIView):
     """
