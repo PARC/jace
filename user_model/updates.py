@@ -4,6 +4,7 @@ from user_model.models import *
 
 def update_all():
         for report in debugReport.objects.all():
+            try:
                 data = report.data
                 event = report.data['event']
                 choices = report.data['choices']
@@ -21,8 +22,12 @@ def update_all():
                 answer = report.data['answer']
                 createdat = report.data['createdAt']
                 if report.kind == "answer":
-                        if name == "getDisplayName":
-                                u = User(identifier=report.source, language='eng', UUID=report.id, timestamp=createdat,
-                                         deletedindicator=False, startDate=createdat, days_since_start=0,
-                                         days_since_last_report=0)
-                                u.save()
+                    if name == "getDisplayName":
+                        u = User(identifier=report.source, language='eng', UUID=report.id,
+                                 timestamp=createdat,
+                                 deletedindicator=False, startDate=createdat, days_since_start=0,
+                                 days_since_last_report=0)
+                        u.save()
+            except KeyError:
+                data = report.data
+                event = report.data['event']
