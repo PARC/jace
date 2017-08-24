@@ -45,4 +45,4 @@ def update_all():
         except(KeyError):
             pass
         finally:
-            return views.ReportDetail.as_view()
+            return views.report_list.as_view()
