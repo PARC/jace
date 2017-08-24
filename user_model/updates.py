@@ -1,3 +1,4 @@
+from communications import views
 from communications.models import *
 from user_model.models import *
 
@@ -7,6 +8,7 @@ Updates all of the other parts of the database.
 
 
 def update_all():
+    views.report_list.as_view()
     for report in debugReport.objects.all():
         try:
             data = report.data
@@ -41,6 +43,5 @@ def update_all():
                                  deletedIndicator=False, Days_since_start=0,
                                  Days_since_last_report=0)
                         u.save()
-
         except KeyError:
             data = report.data
