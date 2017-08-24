@@ -6,6 +6,8 @@ Joel Schooler
 from django.contrib.postgres import fields
 from django.db import models
 
+from user_model.updates import update_all
+
 UUID_FIELD = 36
 SHORT_LENGTH = 200
 MEDIUM_LENGTH = 1024
@@ -22,7 +24,6 @@ class FittleReport(models.Model):
     data = fields.JSONField()
     shared = fields.JSONField()
     createdAt = models.CharField(max_length=SHORT_LENGTH)
-
     def __repr__(self):
         return str(self._id)
 
@@ -32,5 +33,6 @@ class debugReport(models.Model):
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     data = fields.JSONField()
     source = models.CharField(max_length=SHORT_LENGTH)
+    update_all()
     def __repr__(self):
         return str(self.data)

@@ -29,10 +29,14 @@ def update_all():
                 print("Workings")
                 if report.kind == "answer":
                     if name == "getDisplayName":
+                        """
+                        make a new user
+                        """
                         u = User(identifier=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
                                  deletedIndicator=False, Days_since_start=0,
                                  Days_since_last_report=0)
                         u.save()
+
         except KeyError:
             data = report.data

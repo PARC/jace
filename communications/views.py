@@ -16,10 +16,6 @@ class report_list(generics.ListCreateAPIView):
     queryset = debugReport.objects.all()
     serializer_class = DebugReportSeriealizer
 
-    def post(self, request, *args, **kwargs):
-        update_all()
-        return self.create(request, *args, **kwargs)
-
 class user_list(generics.ListCreateAPIView):
     """
     List all users, or create a new user.
