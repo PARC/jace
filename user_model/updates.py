@@ -45,5 +45,3 @@ def update_all():
                         u.save()
         except(KeyError):
             pass
-        finally:
-            views.report_list.as_view()
