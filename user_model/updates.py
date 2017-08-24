@@ -8,7 +8,6 @@ Updates all of the other parts of the database.
 
 
 def update_all():
-    views.report_list.as_view()
     for report in debugReport.objects.all():
         try:
             data = report.data
@@ -45,3 +44,5 @@ def update_all():
                         u.save()
         except(KeyError):
             pass
+        finally:
+            return views.ReportDetail.as_view()
