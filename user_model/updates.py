@@ -12,6 +12,9 @@ def update_all():
             data = report.data
             event = report.data['event']
             if report.data["event"] == "answerQuestion":
+                """
+                set data into variabbles, de dictafy
+                """
                 questionData = data["question"]
                 choices = questionData["choices"]
                 answered_on_day = questionData["answeredOnDay"]
