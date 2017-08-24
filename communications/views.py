@@ -15,7 +15,10 @@ class report_list(generics.ListCreateAPIView):
     """
     queryset = debugReport.objects.all()
     serializer_class = DebugReportSeriealizer
-    update_all()
+
+    def post(self, request, *args, **kwargs):
+        update_all()
+        return self.create(request, *args, **kwargs)
 
 class user_list(generics.ListCreateAPIView):
     """
