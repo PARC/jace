@@ -36,4 +36,3 @@ def update_all():
                         u.save()
         except KeyError:
             data = report.data
-            event = report.data['event']
