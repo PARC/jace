@@ -1,6 +1,9 @@
 from communications.models import *
 from user_model.models import *
 
+"""
+Updates all of the other parts of the database.
+"""
 
 def update_all():
     for report in debugReport.objects.all():
@@ -23,7 +26,7 @@ def update_all():
                 text = questionData['text']
                 answer = questionData['answer']
                 createdat = questionData['createdAt']
-                print(name)
+                print("Workings")
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         u = User(identifier=report.source, language='eng', UUID=report.id,
