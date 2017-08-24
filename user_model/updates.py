@@ -43,5 +43,7 @@ def update_all():
                                  deletedIndicator=False, Days_since_start=0,
                                  Days_since_last_report=0)
                         u.save()
+        except(KeyError):
+            pass
         finally:
             views.report_list.as_view()
