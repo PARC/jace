@@ -5,5 +5,6 @@ class UserModelConfig(AppConfig):
     name = 'user_model'
 
     def ready(self):
-        pass
-        
+        import user_model.signals #imports the singlas
+
+
