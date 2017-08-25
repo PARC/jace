@@ -1,4 +1,3 @@
-from communications import views
 from communications.models import *
 from user_model.models import *
 
@@ -44,5 +43,3 @@ def update_all():
                         u.save()
         except(KeyError):
             pass
-        finally:
-            return views.report_list.as_view()
