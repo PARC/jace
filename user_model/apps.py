@@ -6,3 +6,4 @@ class UserModelConfig(AppConfig):
 
     def ready(self):
         pass
+        
