@@ -2,6 +2,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from communications.models import *
 from user_model.models import *
+import redis
+import os
+conn = redis.Redis(port=os.environ['REDIS'].split(':')[1])
 
 """
 Updates all of the other parts of the database.
@@ -34,6 +37,7 @@ def update_all(sender, **kwargs):
                 answer = questionData['answer']
                 createdat = questionData['createdAt']
                 print("Workings")
+                conn.hmset("pythonDict", questionData)
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
