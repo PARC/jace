@@ -8,7 +8,7 @@ Updates all of the other parts of the database.
 """
 
 
-@receiver(post_save, sender=User)
+@receiver(post_save, sender=debugReport)
 def update_all(sender, **kwargs):
     for report in debugReport.objects.all():
         try:
