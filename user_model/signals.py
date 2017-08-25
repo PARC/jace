@@ -37,7 +37,7 @@ def update_all(sender, **kwargs):
                 answer = questionData['answer']
                 createdat = questionData['createdAt']
                 print("Workings")
-              #  conn.hmset("pythonDict", questionData)
+                #conn.hmset("pythonDict", questionData)
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
