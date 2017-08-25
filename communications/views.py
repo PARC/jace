@@ -4,7 +4,6 @@ from rest_framework import generics
 
 from communications.seriealizers import *
 from user_model.serializers import *
-from user_model.updates import *
 
 r = redis.StrictRedis(host='localhost', port=32772, db=0)
 
