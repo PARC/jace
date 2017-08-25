@@ -4,7 +4,7 @@ from communications.models import *
 from user_model.models import *
 import redis
 import os
-conn = redis.Redis(port=os.environ['REDIS'].split(':')[1],host=os.environ['REDIS'].split(':')[1])
+conn = redis.Redis(port=os.environ['REDIS'].split(':')[1],host=os.environ['REDIS'].split(':')[0])
 
 """
 Updates all of the other parts of the database.
