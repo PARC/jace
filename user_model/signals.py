@@ -1,12 +1,12 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
 from communications.models import *
 from user_model.models import *
 
 """
 Updates all of the other parts of the database.
 """
+
 
 @receiver(post_save, sender=User)
 def update_all(sender, **kwargs):
@@ -46,4 +46,5 @@ def update_all(sender, **kwargs):
                         u.save()
         except(KeyError):
             pass
+
 
