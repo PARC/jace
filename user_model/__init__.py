@@ -1,1 +1,2 @@
-default_app_config = 'user_model.apps.ProfilesConfig'
+default_app_config = 'user_model.apps.UserModelConfig'
+

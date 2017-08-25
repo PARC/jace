@@ -8,8 +8,7 @@ from user_model.models import *
 Updates all of the other parts of the database.
 """
 
-
-@receiver(post_save, sender=debugReport)
+@receiver(post_save, sender=User)
 def update_all(sender, **kwargs):
     for report in debugReport.objects.all():
         try:
@@ -47,3 +46,4 @@ def update_all(sender, **kwargs):
                         u.save()
         except(KeyError):
             pass
+
