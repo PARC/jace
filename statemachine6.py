@@ -1,11 +1,12 @@
 import os
 import random
-
+import sys
 import redis
 from durable.lang import *
 
 from communications.outgoing import *
 
+sys.settrace
 with ruleset('coach'):
 
     @when_all(m.timeChange == True)
@@ -34,10 +35,6 @@ with ruleset('coach'):
         #         random.choice(["yes", "no"]))))
         pass
 
-    @when_start
-    def start(host):
-        for i in range(32):
-            host.post('coach',{"timeChange":False})
 
 if __name__ == '__main__':
     """
@@ -46,5 +43,6 @@ if __name__ == '__main__':
     redis.StrictRedis(host=os.environ['REDIS'].split(':')[0], port=os.environ['REDIS'].split(':')[1]).flushall()
     # run_all([{'host': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}]);
     #redis.StrictRedis(port=32768).flushall()
-    run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]);
+
+    run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]); #c command can't bbbe done using split
 
