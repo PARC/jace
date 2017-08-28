@@ -47,4 +47,4 @@ if __name__ == '__main__':
     """
     redis.StrictRedis(port=os.environ['REDIS'].split(':')[1])
     run_all([{'host': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],
-            port=os.environ['REDIS'].split(':')[1]);
+            port=os.environ['REDIS'].split(':')[1])
