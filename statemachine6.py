@@ -9,7 +9,7 @@ from communications.outgoing import *
 with ruleset('coach'):
 
 
-    @when_all(m.time_to_change())
+    @when_all(m.time_to_change)
     def determine_con():
         """
         Will activate if it is time for the user to change conditions based on a two week interval

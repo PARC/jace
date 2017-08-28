@@ -27,4 +27,4 @@ with ruleset('animal'):
     def start(host):
         host.assert_fact('animal', { 'subject': 'Kermit', 'predicate': 'eats', 'object': 'flies'})
 
-run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}], port=32768);
+run_all([{'host': 'localhost', 'port': 32768}], port=32768);
