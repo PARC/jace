@@ -33,9 +33,6 @@ with ruleset('coach'):
             '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.selfCompassion", "value":"y{}"}'.format(
                 random.choice(["yes", "no"]))))
 
-
-
-
     @when_start
     def start(host):
         for i in range(32):
@@ -45,5 +42,5 @@ if __name__ == '__main__':
     """
     This runs the program. Perhaps. copy over to API to start it for each case?
     """
-    redis.StrictRedis(host=os.environ['REDIS'].split(':')[0],port=os.environ['REDIS'].split(':')[1]).flushall()
-    run_all([{'host': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],port=os.environ['REDIS'].split(':')[1])
+    redis.StrictRedis(host=os.environ['REDIS'].split(':')[0], port=os.environ['REDIS'].split(':')[1]).flushall()
+    run_all([{'host': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],port=os.environ['REDIS'].split(':')[1],host_name=os.environ['REDIS'].split(':')[0])
