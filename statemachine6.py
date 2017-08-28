@@ -17,8 +17,8 @@ with ruleset('coach'):
         """
         #todo send message to API to turn on each condition randomly
         question_to_server(
-            '{"studyId":{studyID},"attribute":"settings.selfAffirmation", "value":"{value}"}'.format(
-                random.choice(studyID=c.m.studyID, value=["yes", "no"])))
+            '{"studyId":{},"attribute":"settings.selfAffirmation", "value":""}'.format(
+                random.choice(c.m.studyID,["yes", "no"])))
         question_to_server(
             '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.implementationIntention", "value":"y{}"}'.format(
                 random.choice(["yes", "no"])))
