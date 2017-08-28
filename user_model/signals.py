@@ -2,10 +2,8 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from communications.models import *
 from user_model.models import *
-import redis
-import os
 #conn = redis.Redis(port=os.environ['REDIS'].split(':')[1],host=os.environ['REDIS'].split(':')[0])
-
+from communications import toRedis
 """
 Updates all of the other parts of the database.
 """
@@ -48,6 +46,8 @@ def update_all(sender, **kwargs):
                                  deletedIndicator=False, Days_since_start=0,
                                  Days_since_last_report=0)
                         u.save()
+                        toRedis.post_to_redis(u)
+
         except(KeyError):
             pass
 
