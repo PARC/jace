@@ -17,8 +17,8 @@ with ruleset('coach'):
         """
         #todo send message to API to turn on each condition randomly
         question_to_server(
-            '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.selfAffirmation", "value":"{}"}'.format(
-                random.choice(["yes", "no"])))
+            '{"studyId":{studyID},"attribute":"settings.selfAffirmation", "value":"{value}"}'.format(
+                random.choice(studyID=c.m.studyID, value=["yes", "no"])))
         question_to_server(
             '{"studyId":"shszxqlpkw89s98f6","attribute":"settings.implementationIntention", "value":"y{}"}'.format(
                 random.choice(["yes", "no"])))
@@ -46,5 +46,5 @@ if __name__ == '__main__':
     This runs the program. Perhaps. copy over to API to start it for each case?
     """
     redis.StrictRedis(port=os.environ['REDIS'].split(':')[1]).flushall()
-    run_all([{'REDIS': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],
+    run_all([{'host': os.environ['REDIS'].split(':')[0], 'port': os.environ['REDIS'].split(':')[1]}],
             port=os.environ['REDIS'].split(':')[1]);
