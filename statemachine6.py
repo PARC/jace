@@ -46,6 +46,6 @@ if __name__ == '__main__':
     """
     redis.StrictRedis(host=os.environ['REDIS'].split(':')[0], port=os.environ['REDIS'].split(':')[1]).flushall()
     #redis.StrictRedis(port=32768).flushall()
-    #run_all([{'host': "localhost", 'port':32768}])
-    run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]); #c command can't bbbe done using split
+    #run_all([{'host': "localhost", 'port':32768}],port=3000,host_name="localhost")
+    run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}],host_name="localhost"); #c command can't bbbe done using split
 
