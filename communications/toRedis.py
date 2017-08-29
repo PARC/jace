@@ -7,7 +7,7 @@ def post_to_redis(value):
     print(r.json())
     r.close()
 
-post_to_redis(False)
+
 
 
 
