@@ -28,5 +28,6 @@ with ruleset('animal'):
     def start(host):
         host.assert_fact('animal', { 'subject': 'Kermit', 'predicate': 'eats', 'object': 'flies'})
 
-sys.settrace(run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]))
+c = sys.settrace(run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]))
+print(c)
 
