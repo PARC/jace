@@ -1,5 +1,6 @@
 from durable.lang import *
-
+import sys
+sys.settrace()
 with ruleset('animal'):
     # will be triggered by 'Kermit eats flies'
     @when_all((m.predicate == 'eats') & (m.object == 'flies'))
