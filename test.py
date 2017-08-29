@@ -1,6 +1,6 @@
 from durable.lang import *
 import sys
-c = sys.settrace()
+
 with ruleset('animal'):
     # will be triggered by 'Kermit eats flies'
     @when_all((m.predicate == 'eats') & (m.object == 'flies'))
@@ -28,5 +28,5 @@ with ruleset('animal'):
     def start(host):
         host.assert_fact('animal', { 'subject': 'Kermit', 'predicate': 'eats', 'object': 'flies'})
 
-run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]);
-print(c)
+sys.settrace(run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]))
+
