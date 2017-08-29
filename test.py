@@ -20,7 +20,14 @@ with ruleset('animal'):
     def black(c):
         c.assert_fact({ 'subject': c.m.subject, 'predicate': 'is', 'object': 'black' })
 
+    @when_all(+m.subject)
+    def output(c):
+        print('Fact: {0} {1} {2}'.format(c.m.subject, c.m.predicate, c.m.object))
 
-run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}])
+    @when_start
+    def start(host):
+        host.assert_fact('animal', { 'subject': 'Kermit', 'predicate': 'eats', 'object': 'flies'})
+
+c = sys.settrace(run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]))
 print(c)
 

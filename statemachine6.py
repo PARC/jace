@@ -44,8 +44,8 @@ if __name__ == '__main__':
     """
     This runs the program. Perhaps. copy over to API to start it for each case?
     """
-    redis.StrictRedis(host=os.environ['REDIS'].split(':')[0], port=os.environ['REDIS'].split(':')[1]).flushall()
-    #redis.StrictRedis(port=32768).flushall()
-    #run_all([{'host': "localhost", 'port':32768}]);
-    run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]); #c command can't bbbe done using split
+    #redis.StrictRedis(host=os.environ['REDIS'].split(':')[0], port=os.environ['REDIS'].split(':')[1]).flushall()
+    redis.StrictRedis(port=32768).flushall()
+    run_all([{'host': "localhost", 'port':32768}]);
+    #run_all([{'host': 'docker.for.mac.localhost', 'port': 32768}]); #c command can't bbbe done using split
 

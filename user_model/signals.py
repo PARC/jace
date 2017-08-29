@@ -35,7 +35,6 @@ def update_all(sender, **kwargs):
                 answer = questionData['answer']
                 createdat = questionData['createdAt']
                 print("Workings")
-                #conn.hmset("pythonDict", questionData)
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
@@ -46,7 +45,7 @@ def update_all(sender, **kwargs):
                                  deletedIndicator=False, Days_since_start=0,
                                  Days_since_last_report=0)
                         u.save()
-                        toRedis.post_to_redis(u)
+                        toRedis.post_to_redis(u.time_to_change())
 
         except(KeyError):
             pass
