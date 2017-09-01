@@ -59,7 +59,6 @@ class Question(models.Model):
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     responceType = models.CharField(max_length=MEDIUM_LENGTH)
-    responceTypeTime = models.DateTimeField(blank=True)
     tag = models.CharField(max_length=MEDIUM_LENGTH)
     choices = models.CharField(max_length=MEDIUM_LENGTH)
     referenceToSurvey = models.ForeignKey(to=Survey)

@@ -46,7 +46,7 @@ Name = models.CharField(max_length=UUID_FIELD)
 
     """
     q = Question(question_text="Hello World", UUID="1771717", timestamp=timezone.now(), deletedIndicator=False,
-                 tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
+                 responceType="Ask Now", tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
                  askTime='10:00', answers="", expireDate="99", expireTime="11:00", Notify=True, Sequence=1,
                  Name="First")
 
@@ -81,7 +81,7 @@ Answered = models.BooleanField()"""
         self.u.save()
         self.assertTrue(self.u in User.objects.all())
         self.q.save()
-        self.assertTrue(self.u in User.objects.all())
+        self.assertTrue(self.u in Question.objects.all())
 
     def test_delete(self):
         print("testing delete")
