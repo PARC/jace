@@ -52,7 +52,10 @@ def update_all(sender, **kwargs):
                         make a survey
 
                         """
-                        survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,
+                        try:
+                            survey = Survey.objects.get(questionData["taskId"])
+                        except:
+                            survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,
                         Name="Activity Debrief")
 
                         """
