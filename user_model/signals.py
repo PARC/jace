@@ -60,12 +60,10 @@ def update_all(sender, **kwargs):
                         Name="Activity Debrief")
                         survey.save()
 
-
-
                         q = Question(question_text=text,UUID=report.ID,timestamp=createdat,deletedIndicator=False,
                                      responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,
-                                     reminders=False,askDate=askDay,askTime=askTime,preferenceToSet=questionData["preferenceToSet"],
-                                     answers=answers,expireDate=expireDate,expireTime=expireTime,Notify=False,
+                                     reminders=False, askDate=askDay,askTime=askTime,
+                                     answers=answers, expireDate=expireDate,expireTime=expireTime,Notify=False,
                                      Sequence=sequence,Name=name)
                         q.save()
 

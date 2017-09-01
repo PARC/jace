@@ -70,7 +70,7 @@ class Question(models.Model):
     answers = models.CharField(max_length=MEDIUM_LENGTH)
     expireDate = models.IntegerField()
     expireTime = models.TimeField()
-    Notify = models.BooleanField()
+    Notify = models.BooleanField(blank=True)
     Sequence = models.IntegerField()
     Name = models.CharField(max_length=UUID_FIELD)
 
