@@ -46,7 +46,7 @@ Name = models.CharField(max_length=UUID_FIELD)
 
     """
     q = Question(question_text="Hello World", UUID="1771717", timestamp=timezone.now(), deletedIndicator=False,
-                 responceType="Ask Now", tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
+                 tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
                  askTime='10:00', answers="", expireDate="99", expireTime="11:00", Notify=True, Sequence=1,
                  Name="First")
 
