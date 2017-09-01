@@ -5,7 +5,7 @@ import datetime
 
 from django.test import TestCase
 from django.utils import timezone
-
+from communications.models import *
 from .models import *
 
 class QuestionModelTests(TestCase):
@@ -46,8 +46,8 @@ Name = models.CharField(max_length=UUID_FIELD)
 
     """
     q = Question(question_text="Hello World", UUID="1771717", timestamp=timezone.now(), deletedIndicator=False,
-                 responceType="Ask Now", tag="Hello", choices="[]", referenceToSurvey=s, reminders=False, askDate="2",
-                 askTime='10:00', answers="", expireDate="99", expireTime="11:00", Notify=True, Sequence=1,
+                 responceType="Ask Now", tag="Hello", choices={}, referenceToSurvey=s, reminders=False, askDate="2",
+                 askTime='10:00', answers=[], expireDate="99", expireTime="11:00", Notify=True, Sequence=1,
                  Name="First")
 
     """ uuid = models.CharField(max_length=UUID_FIELD)
@@ -93,6 +93,74 @@ Answered = models.BooleanField()"""
         self.u.save()
         self.u.delete()
         self.assertFalse(self.u in User.objects.all())
+
+    def test_make_question(self):
+            for report in debugReport.objects.all():
+                try:
+                    data = report.data
+                    event = report.data['event']
+                    if report.data["event"] == "answerQuestion":
+                        """
+                        set data into variabbles, de dictafy
+                        """
+                        questionData = data["question"]
+                        choices = questionData["choices"]
+                        answered_on_day = questionData["answeredOnDay"]
+                        askDate = questionData["askDate"]
+                        askDay = questionData["askDay"]
+                        askDateTime = questionData["askDatetime"]
+                        askTime = questionData["askTime"]
+                        expireDate = questionData['expireDate']
+                        expireTime = questionData['expireTime']
+                        sequence = questionData['sequence']
+                        name = questionData['name']
+                        tag = questionData['tag']
+                        text = questionData['text']
+                        answer = questionData['answer']
+                        createdat = questionData['createdAt']
+                        answers = questionData["answers"]
+                        responceType = questionData["responseFormat"]
+                        print("Workings")
+                        if report.kind == "answer":
+                            if name == "getDisplayName":
+                                """
+                                make a new user
+                                """
+                                u = User(identifier=report.source, language='eng', UUID=report.id,
+                                         timestamp=createdat,
+                                         deletedIndicator=False, Days_since_start=0,
+                                         Days_since_last_report=0)
+                                u.save()
+                            if name == "activityDebrief":
+
+                                """
+                                make a survey
+
+                                """
+                                try:
+                                    survey = Survey.objects.get(questionData["taskId"])
+                                except:
+                                    survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
+                                                    deletedIndicator=False, Name="Activity Debrief")
+                                survey.save()
+
+                                q = Question(question_text=text, UUID=report.ID, timestamp=createdat,
+                                             deletedIndicator=False,
+                                             responceType=responceType, tag=tag, choices=choices,
+                                             referenceToSurvey=survey,
+                                             reminders=False, askDate=askDay, askTime=askTime,
+                                             preferenceToSet="Nothing",
+                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                             Notify=False,
+                                             Sequence=sequence, Name=name)
+                                q.save()
+                except(KeyError):
+                    print(KeyError)
+            self.assertTrue(self.q in Question.objects.all())
+
+
+
+
 
 
 
