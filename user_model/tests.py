@@ -154,6 +154,7 @@ Answered = models.BooleanField()"""
                                              Sequence=sequence, Name=name)
                                 q.save()
                                 self.assertTrue(self.q in Question.objects.all())
+                                print(Question.objects.all())
                 except(TypeError):
                     print("You got a type error")
 
