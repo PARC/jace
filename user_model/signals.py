@@ -57,6 +57,7 @@ def update_all(sender, **kwargs):
                         except:
                             survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,
                         Name="Activity Debrief")
+                        survey.save()
 
                         """
                         make a question for activity's
@@ -86,6 +87,7 @@ def update_all(sender, **kwargs):
                                      askDate=askDay,askTime=askTime,preferenceToSet=questionData["preferenceToSet"],
                                      answers=answers,expireDate=expireDate,expireTime=expireTime,Notify=False,Sequence=sequence,
                                      Name=name)
+                        q.save()
 
         except(KeyError):
             pass
