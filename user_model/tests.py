@@ -95,6 +95,7 @@ Answered = models.BooleanField()"""
         self.assertFalse(self.u in User.objects.all())
 
     def test_make_question(self):
+        print("testing questions")
             for report in debugReport.objects.all():
                 try:
                     data = report.data
