@@ -55,8 +55,7 @@ def update_all(sender, **kwargs):
                         try:
                             survey = Survey.objects.get(questionData["taskId"])
                         except:
-                            survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,
-                        Name="Activity Debrief")
+                            survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,Name="Activity Debrief")
                         survey.save()
                         """question_text = models.CharField(max_length=SHORT_LENGTH)
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
@@ -82,6 +81,7 @@ def update_all(sender, **kwargs):
                                      reminders=False, askDate=askDay,askTime=askTime,preferenceToSet="Nothing",
                                      answers=answers, expireDate=expireDate,expireTime=expireTime,Notify=False,
                                      Sequence=sequence, Name=name)
+
                         q.save()
 
         except(KeyError):

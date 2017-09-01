@@ -1,6 +1,6 @@
 # Create your models here.
 from django.db import models
-
+from django.contrib.postgres import fields
 UUID_FIELD = 36
 SHORT_LENGTH = 200
 MEDIUM_LENGTH = 1024
@@ -60,13 +60,13 @@ class Question(models.Model):
     deletedIndicator = models.BooleanField()
     responceType = models.CharField(max_length=MEDIUM_LENGTH)
     tag = models.CharField(max_length=MEDIUM_LENGTH)
-    choices = models.CharField(max_length=MEDIUM_LENGTH)
+    choices = fields.JSONField()
     referenceToSurvey = models.ForeignKey(to=Survey)
     reminders = models.BooleanField()
     askDate = models.IntegerField()
     askTime = models.TimeField()
     preferenceToSet = models.CharField(max_length=MEDIUM_LENGTH,blank=True)
-    answers = models.CharField(max_length=MEDIUM_LENGTH)
+    answers = fields.JSONField()
     expireDate = models.IntegerField()
     expireTime = models.TimeField()
     Notify = models.BooleanField(blank=True)
