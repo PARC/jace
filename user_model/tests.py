@@ -80,6 +80,7 @@ Answered = models.BooleanField()"""
         """
         self.u.save()
         self.assertTrue(self.u in User.objects.all())
+        self.s.save()
         self.q.save()
         self.assertTrue(self.u in Question.objects.all())
 
