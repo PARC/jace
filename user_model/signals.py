@@ -60,37 +60,16 @@ def update_all(sender, **kwargs):
                         Name="Activity Debrief")
                         survey.save()
 
-                        """
-                        make a question for activity's
 
-                        question_text = models.CharField(max_length=SHORT_LENGTH)
-    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
-    timestamp = models.DateTimeField()
-    deletedIndicator = models.BooleanField()
-    responceType = models.CharField(max_length=MEDIUM_LENGTH)
-    responceTypeTime = models.DateTimeField(blank=True)
-    tag = models.CharField(max_length=MEDIUM_LENGTH)
-    choices = models.CharField(max_length=MEDIUM_LENGTH)
-    referenceToSurvey = models.ForeignKey(to=Survey)
-    reminders = models.BooleanField()
-    askDate = models.IntegerField()
-    askTime = models.TimeField()
-    preferenceToSet = models.CharField(max_length=MEDIUM_LENGTH,blank=True)
-    answers = models.CharField(max_length=MEDIUM_LENGTH)
-    expireDate = models.IntegerField()
-    expireTime = models.TimeField()
-    Notify = models.BooleanField()
-    Sequence = models.IntegerField()
-    Name = models.CharField(max_length=UUID_FIELD)
-                        """
+
                         q = Question(question_text=text,UUID=report.ID,timestamp=createdat,deletedIndicator=False,
-                                     responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,reminders=False,
-                                     askDate=askDay,askTime=askTime,preferenceToSet=questionData["preferenceToSet"],
-                                     answers=answers,expireDate=expireDate,expireTime=expireTime,Notify=False,Sequence=sequence,
-                                     Name=name)
+                                     responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,
+                                     reminders=False,askDate=askDay,askTime=askTime,preferenceToSet=questionData["preferenceToSet"],
+                                     answers=answers,expireDate=expireDate,expireTime=expireTime,Notify=False,
+                                     Sequence=sequence,Name=name)
                         q.save()
 
         except(KeyError):
-            pass
+            print(KeyError)
 
 
