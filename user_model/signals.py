@@ -59,7 +59,7 @@ def update_all(sender, **kwargs):
                         survey.save()
 
 
-                        q = Question(question_text=text,UUID=report.ID,timestamp=createdat, deletedIndicator=False,
+                        q = Question(question_text=text,UUID=questionData["_id"],timestamp=createdat, deletedIndicator=False,
                                      responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,
                                      reminders=False, askDate=askDay,askTime=askTime,preferenceToSet="Nothing",
                                      answers=answers, expireDate=expireDate,expireTime=expireTime,Notify=False,
