@@ -12,9 +12,6 @@ class QuestionModelTests(TestCase):
     u = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
              Days_since_start=14, Days_since_last_report=2)
 
-    i = Intervention(UUID="1234567", timestamp=timezone.now(), deletedIndicator=False, Name="II",
-                     Intervention_Type="Implemntation", Setup_Complete=False, Is_On=False, startdate=1)
-
     """
     uuid = models.CharField(max_length=UUID_FIELD)
 timestamp = models.DateTimeField()
@@ -22,7 +19,7 @@ deletedIndicator = models.BooleanField()
 Name = models.CharField(max_length=UUID_FIELD)
 Reference_to_Intervention = models.ForeignKey(Intervention)
     """
-    s = Survey(UUID="7711", timestamp=timezone.now(), deletedIndicator=False, Name="II1", Reference_to_Intervention=i)
+    s = Survey(UUID="7711", timestamp=timezone.now(), deletedIndicator=False, Name="II1")
 
     """
     question_text = models.CharField(max_length=SHOzRT_LENGTH)

@@ -43,33 +43,15 @@ class User(models.Model):
             return "Was Expecting an Integer"
 
 
-class Intervention(models.Model):
-    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
-    timestamp = models.DateTimeField()
-    deletedIndicator = models.BooleanField()
-    Name = models.CharField(max_length=UUID_FIELD)
-    Intervention_Type = models.CharField(max_length=UUID_FIELD)
-    Setup_Complete = models.BooleanField()
-    Is_On = models.BooleanField()
-    startdate = models.IntegerField()
-
-    def __repr__(self):
-        return self.Name
-
-    def to_dict(self):
-        return {"UUID": self.UUID, "name": self.Name, "InterventionType": self.Intervention_Type, "Is_On": self.Is_On}
-
 
 class Survey(models.Model):
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     Name = models.CharField(max_length=UUID_FIELD)
-    Reference_to_Intervention = models.ForeignKey(Intervention)
 
     def __repr__(self):
         return self.Names
-
 
 class Question(models.Model):
     question_text = models.CharField(max_length=SHORT_LENGTH)
