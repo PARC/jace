@@ -63,7 +63,7 @@ def update_all(sender, **kwargs):
                                      responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,
                                      reminders=False, askDate=askDay,askTime=askTime,
                                      answers=answers, expireDate=expireDate,expireTime=expireTime,Notify=False,
-                                     Sequence=sequence,Name=name)
+                                     Sequence=sequence, Name=name)
                         q.save()
 
         except(KeyError):

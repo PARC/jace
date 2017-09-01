@@ -21,7 +21,7 @@ class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
         fields = (
-            'question_text', 'UUID', 'timestamp', 'deletedIndicator', 'responceType', 'responceTypeTime', 'tag',
+            'question_text', 'UUID', 'timestamp', 'deletedIndicator', 'responceType', 'tag',
             'choices',
             "referenceToSurvey", "reminders", "askDate", "askTime", "preferenceToSet", "answers", "expireDate",
             "expireTime",
