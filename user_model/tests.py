@@ -96,72 +96,72 @@ Answered = models.BooleanField()"""
 
     def test_make_question(self):
         print("testing questions")
-            for report in debugReport.objects.all():
-                try:
-                    data = report.data
-                    event = report.data['event']
-                    if report.data["event"] == "answerQuestion":
-                        """
-                        set data into variabbles, de dictafy
-                        """
-                        questionData = data["question"]
-                        choices = questionData["choices"]
-                        answered_on_day = questionData["answeredOnDay"]
-                        askDate = questionData["askDate"]
-                        askDay = questionData["askDay"]
-                        askDateTime = questionData["askDatetime"]
-                        askTime = questionData["askTime"]
-                        expireDate = questionData['expireDate']
-                        expireTime = questionData['expireTime']
-                        sequence = questionData['sequence']
-                        name = questionData['name']
-                        tag = questionData['tag']
-                        text = questionData['text']
-                        answer = questionData['answer']
-                        createdat = questionData['createdAt']
-                        answers = questionData["answers"]
-                        responceType = questionData["responseFormat"]
-                        print("Workings")
-                        if report.kind == "answer":
-                            if name == "getDisplayName":
-                                """
-                                make a new user
-                                """
-                                u = User(identifier=report.source, language='eng', UUID=report.id,
-                                         timestamp=createdat,
-                                         deletedIndicator=False, Days_since_start=0,
-                                         Days_since_last_report=0)
-                                u.save()
-                            if name == "activityDebrief":
+        for report in debugReport.objects.all():
+            try:
+                data = report.data
+                event = report.data['event']
+                if report.data["event"] == "answerQuestion":
+                    """
+                    set data into variabbles, de dictafy
+                    """
+                    questionData = data["question"]
+                    choices = questionData["choices"]
+                    answered_on_day = questionData["answeredOnDay"]
+                    askDate = questionData["askDate"]
+                    askDay = questionData["askDay"]
+                    askDateTime = questionData["askDatetime"]
+                    askTime = questionData["askTime"]
+                    expireDate = questionData['expireDate']
+                    expireTime = questionData['expireTime']
+                    sequence = questionData['sequence']
+                    name = questionData['name']
+                    tag = questionData['tag']
+                    text = questionData['text']
+                    answer = questionData['answer']
+                    createdat = questionData['createdAt']
+                    answers = questionData["answers"]
+                    responceType = questionData["responseFormat"]
+                    print("Workings")
+                    if report.kind == "answer":
+                        if name == "getDisplayName":
+                            """
+                            make a new user
+                            """
+                            u = User(identifier=report.source, language='eng', UUID=report.id,
+                                     timestamp=createdat,
+                                     deletedIndicator=False, Days_since_start=0,
+                                     Days_since_last_report=0)
+                            u.save()
+                        if name == "activityDebrief":
 
-                                """
-                                make a survey
+                            """
+                            make a survey
 
-                                """
-                                try:
-                                    survey = Survey.objects.get(questionData["taskId"])
-                                except:
-                                    survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
-                                                    deletedIndicator=False, Name="Activity Debrief")
-                                survey.save()
-                                try:
-                                    q = Question(question_text=text, UUID=report.id, timestamp=createdat,
-                                                 deletedIndicator=False,
-                                                 responceType=responceType, tag=tag, choices=choices,
-                                                 referenceToSurvey=survey,
-                                                 reminders=False, askDate=askDay, askTime=askTime,
-                                                 preferenceToSet="Nothing",
-                                                 answers=answers, expireDate=expireDate, expireTime=expireTime,
-                                                 Notify=False,
-                                                 Sequence=sequence, Name=name)
-                                    q.save()
-                                except():
-                                    print("error is here")
+                            """
+                            try:
+                                survey = Survey.objects.get(questionData["taskId"])
+                            except:
+                                survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
+                                                deletedIndicator=False, Name="Activity Debrief")
+                            survey.save()
+                            try:
+                                q = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                             deletedIndicator=False,
+                                             responceType=responceType, tag=tag, choices=choices,
+                                             referenceToSurvey=survey,
+                                             reminders=False, askDate=askDay, askTime=askTime,
+                                             preferenceToSet="Nothing",
+                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                             Notify=False,
+                                             Sequence=sequence, Name=name)
+                                q.save()
+                            except():
+                                print("error is here")
 
-                except(TypeError):
-                    print("You got a type error")
-                self.assertTrue(self.q in Question.objects.all())
-                print(Question.objects.all())
+            except(TypeError):
+                print("You got a type error")
+            self.assertTrue(self.q in Question.objects.all())
+            print(Question.objects.all())
 
 
 
