@@ -10,17 +10,11 @@ class UserSerializer(serializers.ModelSerializer):
             "Days_since_last_report")
 
 
-class InterventionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Intervention
-        fields = ("uuid", "timestamp", "deletedIndicator", "Name", "Intervention_Type", "Setup_Complete", "Is_On",
-                  "startdate", "reference_to_user")
-
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
-        fields = ("UUID", "timestamp", "deletedIndicator", "Name", "Reference_to_Intervention")
+        fields = ("UUID", "timestamp", "deletedIndicator", "Name")
 
 
 class QuestionSerializer(serializers.ModelSerializer):
