@@ -143,20 +143,24 @@ Answered = models.BooleanField()"""
                                     survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
                                                     deletedIndicator=False, Name="Activity Debrief")
                                 survey.save()
-                                q = Question(question_text=text, UUID=report.id, timestamp=createdat,
-                                             deletedIndicator=False,
-                                             responceType=responceType, tag=tag, choices=choices,
-                                             referenceToSurvey=survey,
-                                             reminders=False, askDate=askDay, askTime=askTime,
-                                             preferenceToSet="Nothing",
-                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
-                                             Notify=False,
-                                             Sequence=sequence, Name=name)
-                                q.save()
-                                self.assertTrue(self.q in Question.objects.all())
-                                print(Question.objects.all())
+                                try:
+                                    q = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                                 deletedIndicator=False,
+                                                 responceType=responceType, tag=tag, choices=choices,
+                                                 referenceToSurvey=survey,
+                                                 reminders=False, askDate=askDay, askTime=askTime,
+                                                 preferenceToSet="Nothing",
+                                                 answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                                 Notify=False,
+                                                 Sequence=sequence, Name=name)
+                                    q.save()
+                                except():
+                                    print("error is here")
+
                 except(TypeError):
                     print("You got a type error")
+                self.assertTrue(self.q in Question.objects.all())
+                print(Question.objects.all())
 
 
 
