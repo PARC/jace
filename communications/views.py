@@ -24,14 +24,6 @@ class user_list(generics.ListCreateAPIView):
     serializer_class = UserSerializer
 
 
-class intervention_list(generics.ListCreateAPIView):
-    """
-    List all Intervention, or create a new Intervention.
-    """
-
-    queryset = Intervention.objects.all()
-    serializer_class = InterventionSerializer
-
 
 class survey_list(generics.ListCreateAPIView):
     """
@@ -77,13 +69,6 @@ class user_detail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = UserSerializer
 
 
-class Intervention_detail(generics.RetrieveUpdateDestroyAPIView):
-    """
-       Retrieve, update or delete an intervnetion.
-       """
-
-    queryset = Intervention.objects.all()
-    serializer_class = InterventionSerializer
 
 
 class Survey_detail(generics.RetrieveUpdateDestroyAPIView):
