@@ -143,7 +143,7 @@ Answered = models.BooleanField()"""
                                     survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
                                                     deletedIndicator=False, Name="Activity Debrief")
                                 survey.save()
-                                q = Question(question_text=text, UUID=report.ID, timestamp=createdat,
+                                q = Question(question_text=text, UUID=report.id, timestamp=createdat,
                                              deletedIndicator=False,
                                              responceType=responceType, tag=tag, choices=choices,
                                              referenceToSurvey=survey,
