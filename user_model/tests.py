@@ -80,6 +80,8 @@ Answered = models.BooleanField()"""
         """
         self.u.save()
         self.assertTrue(self.u in User.objects.all())
+        self.q.save()
+        self.assertTrue(self.u in User.objects.all())
 
     def test_delete(self):
         print("testing delete")
