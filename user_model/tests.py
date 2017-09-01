@@ -145,7 +145,7 @@ Answered = models.BooleanField()"""
                                                 deletedIndicator=False, Name="Activity Debrief")
                             survey.save()
                             try:
-                                q = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
                                              deletedIndicator=False,
                                              responceType=responceType, tag=tag, choices=choices,
                                              referenceToSurvey=survey,
@@ -154,13 +154,13 @@ Answered = models.BooleanField()"""
                                              answers=answers, expireDate=expireDate, expireTime=expireTime,
                                              Notify=False,
                                              Sequence=sequence, Name=name)
-                                q.save()
+                                quest.save()
                             except():
                                 print("error is here")
 
             except(TypeError):
                 print("You got a type error")
-            self.assertTrue(self.q in Question.objects.all())
+            self.assertTrue(quest in Question.objects.all())
             print(Question.objects.all())
 
 
