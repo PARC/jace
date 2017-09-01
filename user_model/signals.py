@@ -25,7 +25,7 @@ def update_all(sender, **kwargs):
                 askDay = questionData["askDay"]
                 askDateTime = questionData["askDatetime"]
                 askTime = questionData["askTime"]
-                expireDate = questionData['expireDate']
+                expireDate = questionData['expireDay']
                 expireTime = questionData['expireTime']
                 sequence = questionData['sequence']
                 name = questionData['name']
@@ -47,10 +47,8 @@ def update_all(sender, **kwargs):
                                  Days_since_last_report=0)
                         u.save()
                     if name == "activityDebrief":
-
                         """
                         make a survey
-
                         """
                         try:
                             survey = Survey.objects.get(questionData["taskId"])
@@ -58,16 +56,21 @@ def update_all(sender, **kwargs):
                             survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,Name="Activity Debrief")
                         survey.save()
 
-
-                        q = Question(question_text=text,UUID=questionData["_id"],timestamp=createdat, deletedIndicator=False,
-                                     responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,
-                                     reminders=False, askDate=askDay,askTime=askTime,preferenceToSet="Nothing",
-                                     answers=answers, expireDate=expireDate,expireTime=expireTime,Notify=False,
-                                     Sequence=sequence, Name=name)
-
-                        q.save()
+                        """
+                        make a question
+                        """
+                        quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                         deletedIndicator=False,
+                                         responceType=responceType, tag=tag, choices=choices,
+                                         referenceToSurvey=survey,
+                                         reminders=False, askDate=askDay, askTime=askTime,
+                                         preferenceToSet="Nothing",
+                                         answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                         Notify=False,
+                                         Sequence=sequence, Name=name)
+                        quest.save()
 
         except(KeyError):
-            print(KeyError)
+            pass
 
 

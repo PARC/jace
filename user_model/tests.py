@@ -100,7 +100,7 @@ Answered = models.BooleanField()"""
             try:
                 data = report.data
                 event = report.data['event']
-                if report.data["event"] == "answerQuestion":
+                if event == "answerQuestion":
                     """
                     set data into variabbles, de dictafy
                     """
@@ -111,7 +111,7 @@ Answered = models.BooleanField()"""
                     askDay = questionData["askDay"]
                     askDateTime = questionData["askDatetime"]
                     askTime = questionData["askTime"]
-                    expireDate = questionData['expireDate']
+                    expireDate = questionData['expireDay']
                     expireTime = questionData['expireTime']
                     sequence = questionData['sequence']
                     name = questionData['name']
@@ -158,11 +158,9 @@ Answered = models.BooleanField()"""
                             except():
                                 print("error is here")
 
-            except(TypeError):
-                print("You got a type error")
+            except(KeyError):
+                print("You got a key error")
             self.assertTrue(quest in Question.objects.all())
-            print(Question.objects.all())
-
 
 
 
