@@ -35,6 +35,7 @@ def update_all(sender, **kwargs):
                 createdat = questionData['createdAt']
                 answers = questionData["answers"]
                 name = questionData["name"]
+                responceType = questionData["responseFormat"]
                 print("Workings")
                 if report.kind == "answer":
                     if name == "getDisplayName":
@@ -83,7 +84,7 @@ def update_all(sender, **kwargs):
     Name = models.CharField(max_length=UUID_FIELD)
                         """
                         q = Question(question_text=text,UUID=report.ID,timestamp=createdat,deletedIndicator=False,
-                                     responceType=None,tag=tag,choices=choices,referenceToSurvey=survey,reminders=False,
+                                     responceType=responceType,tag=tag,choices=choices,referenceToSurvey=survey,reminders=False,
                                      askDate=askDay,askTime=askTime,preferenceToSet=questionData["preferenceToSet"],
                                      answers=answers,expireDate=expireDate,expireTime=expireTime,Notify=False,Sequence=sequence,
                                      Name=name)
