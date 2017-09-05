@@ -27,6 +27,7 @@ class FittleReport(models.Model):
 
 
 class debugReport(models.Model):
+    _id = models.CharField(max_length=UUID_FIELD)
     studyName = models.CharField(max_length=MEDIUM_LENGTH)
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     data = fields.JSONField()
