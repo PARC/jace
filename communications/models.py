@@ -31,6 +31,7 @@ class debugReport(models.Model):
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     data = fields.JSONField()
     source = models.CharField(max_length=SHORT_LENGTH)
+    shared = fields.JSONField()
     def __repr__(self):
         return str(self.data)
 
