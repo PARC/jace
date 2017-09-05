@@ -14,7 +14,7 @@ def change_condition(condittion):
 
 Data={"studyId":"BLeJvi5jc2fhPT77N","attribute": "selfAffirmation","value": "yes"}
 
-#change_condition(Data)
+change_condition(Data)
 
 
 
