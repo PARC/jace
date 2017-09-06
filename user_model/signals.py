@@ -35,7 +35,6 @@ def update_all(sender, **kwargs):
                 createdat = questionData['createdAt']
                 answers = questionData["answers"]
                 responceType = questionData["responseFormat"]
-                source = report.source
                 print("Workings")
                 if report.kind == "answer":
                     if name == "getDisplayName":
