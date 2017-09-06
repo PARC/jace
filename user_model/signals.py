@@ -71,6 +71,7 @@ def update_all(sender, **kwargs):
                         quest.save()
 
 
+
         except(KeyError):
             pass
 
