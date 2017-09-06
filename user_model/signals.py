@@ -70,14 +70,6 @@ def update_all(sender, **kwargs):
                                          Notify=False,
                                          Sequence=sequence, Name=name)
                         quest.save()
-                        try:
-                            user = User.objects.get(Source=source)
-                            user.Days_since_start = askDay
-                            answer = Answer(UUID=report.id,timestamp=createdat,deletedIndicator=False,question=quest,user=user,
-                                            Answer_text=answer,Answered=bool(answer))
-                            answer.save()
-                        except():
-                            print('user does not exist')
 
 
         except(KeyError):
