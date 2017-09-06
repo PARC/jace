@@ -5,30 +5,23 @@ from user_model.models import *
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = (
-            'identifier', 'language', 'UUID', 'timestamp', 'deletedIndicator', "Days_since_start",
-            "Days_since_last_report")
+        fields = "__all__"
 
 
 
 class SurveySerializer(serializers.ModelSerializer):
     class Meta:
         model = Survey
-        fields = ("UUID", "timestamp", "deletedIndicator", "Name")
+        fields = "__all__"
 
 
 class QuestionSerializer(serializers.ModelSerializer):
     class Meta:
         model = Question
-        fields = (
-            'question_text', 'UUID', 'timestamp', 'deletedIndicator', 'responceType', 'tag',
-            'choices',
-            "referenceToSurvey", "reminders", "askDate", "askTime", "preferenceToSet", "answers", "expireDate",
-            "expireTime",
-            "Notify", "Sequence", "Name")
+        fields = "__all__"
 
 
 class AnswersSerializer(serializers.ModelSerializer):
     class Meta:
         model = Answer
-        fields = ("UUID", "timestamp", "deletedIndicator", "question", "user", "Answer_text", "Answered")
+        fields = "__all__"

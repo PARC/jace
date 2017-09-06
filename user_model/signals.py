@@ -35,6 +35,7 @@ def update_all(sender, **kwargs):
                 createdat = questionData['createdAt']
                 answers = questionData["answers"]
                 responceType = questionData["responseFormat"]
+                source = report.source
                 print("Workings")
                 if report.kind == "answer":
                     if name == "getDisplayName":
@@ -69,6 +70,22 @@ def update_all(sender, **kwargs):
                                          Notify=False,
                                          Sequence=sequence, Name=name)
                         quest.save()
+
+                        try:
+                            """UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
+    timestamp = models.DateTimeField()
+    deletedIndicator = models.BooleanField()
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
+    Answered = models.BooleanField()"""
+                            user = User.objects.get(source=source)
+                            user.Days_since_start +=1
+                            answer = Answer(UUID=report.id,timestamp=createdat,deletedIndicator=False,question=quest,
+                                            user=user,Answer_text=answer,Answered=bool(answer))
+                            answer.save()
+                        except():
+                            pass
 
 
 
