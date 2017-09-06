@@ -27,3 +27,7 @@ def change_for_miss(user):
     if user.days_since_last_report > 3:
         decision = {"user": user, "SC": random.choice([True, False])}
         outgoing.question_to_server()
+
+def upkeep(user):
+        #todo get most recent post, if most recent post is greater than 1 day ago, update
+        pass
