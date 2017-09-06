@@ -6,15 +6,16 @@ def question_to_server(question_dict):
     payload = question_dict
     r = requests.post('http://localhost:3000/serviceapi/participants/update/woof', data=payload, header=header)
 
-def change_condition(condittion):
+def change_condition(studyId,attribute,value):
     header = {"Content-Type": "application/json"}
-    payload = condittion
-    r = requests.post('http://localhost:3000/serviceapi/participants/update/woof', json=payload)
-    print(r.reason)
+    payload = {"studyId":studyId,"attribute":attribute,"value":value}
+    r = requests.post('http://localhost:3000/serviceapi/participants/update/:token', json=payload)
+    print(r)
 
-Data={"studyId":"BLeJvi5jc2fhPT77N","attribute": "selfAffirmation","value": "yes"}
-
-change_condition(Data)
+Data={"studyId":"1234","attribute": "settings.implementationIntention","value": "yes"}
+Data2={"studyId":"1234","attribute": "settings.selfAffirmation","value": "no"}
+Data3={"studyId":"1234","attribute": "settings.control","value": "no"}
+change_condition("1234","settings.implementationIntention","yes")
 
 
 
