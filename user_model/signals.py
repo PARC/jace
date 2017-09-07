@@ -60,19 +60,19 @@ def update_all(sender, **kwargs):
                         make a question
                         """
 
-                        try:
-                            quest = Question.objects.get(question_text=text,referenceToSurvey=survey)
-                        except():
-                            quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
-                                             deletedIndicator=False,
-                                             responceType=responceType, tag=tag, choices=choices,
-                                             referenceToSurvey=survey,
-                                             reminders=False, askDate=askDay, askTime=askTime,
-                                             preferenceToSet="Nothing",
-                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
-                                             Notify=False,
-                                             Sequence=sequence, Name=name)
-                            quest.save()
+                        # try:
+                        #     quest = Question.objects.get(question_text=text,referenceToSurvey=survey)
+                        # except():
+                        quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                         deletedIndicator=False,
+                                         responceType=responceType, tag=tag, choices=choices,
+                                         referenceToSurvey=survey,
+                                         reminders=False, askDate=askDay, askTime=askTime,
+                                         preferenceToSet="Nothing",
+                                         answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                         Notify=False,
+                                         Sequence=sequence, Name=name)
+                        quest.save()
 
                         try:
                             """UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
