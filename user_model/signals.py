@@ -82,6 +82,7 @@ def update_all(sender, **kwargs):
     Answered = models.BooleanField()"""
                             user = User.objects.get(identifier=source)
                             user.Last_day_reported = askDay
+                            user.save()
                             answer = Answer(UUID=report.id,timestamp=createdat,deletedIndicator=False,question=quest,
                                             user=user,Answer_text=answer,Answered=bool(answer))
                             answer.save()
