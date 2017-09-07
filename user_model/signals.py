@@ -2,7 +2,6 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from communications.models import *
 from user_model.models import *
-#conn = redis.Redis(port=os.environ['REDIS'].split(':')[1],host=os.environ['REDIS'].split(':')[0])
 """
 Updates all of the other parts of the database.
 """
@@ -60,16 +59,20 @@ def update_all(sender, **kwargs):
                         """
                         make a question
                         """
-                        quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
-                                         deletedIndicator=False,
-                                         responceType=responceType, tag=tag, choices=choices,
-                                         referenceToSurvey=survey,
-                                         reminders=False, askDate=askDay, askTime=askTime,
-                                         preferenceToSet="Nothing",
-                                         answers=answers, expireDate=expireDate, expireTime=expireTime,
-                                         Notify=False,
-                                         Sequence=sequence, Name=name)
-                        quest.save()
+
+                        try:
+                            quest = Question.objects.get(question_text=text,referenceToSurvey=survey)
+                        except():
+                            quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                             deletedIndicator=False,
+                                             responceType=responceType, tag=tag, choices=choices,
+                                             referenceToSurvey=survey,
+                                             reminders=False, askDate=askDay, askTime=askTime,
+                                             preferenceToSet="Nothing",
+                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                             Notify=False,
+                                             Sequence=sequence, Name=name)
+                            quest.save()
 
                         try:
                             """UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
@@ -80,15 +83,11 @@ def update_all(sender, **kwargs):
     Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
     Answered = models.BooleanField()"""
                             user = User.objects.get(identifier=source)
-                            user.Days_since_start = askDay
-                            user.save()
                             answer = Answer(UUID=report.id,timestamp=createdat,deletedIndicator=False,question=quest,
                                             user=user,Answer_text=answer,Answered=bool(answer))
                             answer.save()
                         except():
                             pass
-
-
 
         except(KeyError):
             pass

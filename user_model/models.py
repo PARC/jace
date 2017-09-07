@@ -18,7 +18,7 @@ class User(models.Model):
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     Days_since_start = models.IntegerField()
-    Days_since_last_report = models.IntegerField()
+    Last_day_reported = models.IntegerField()
 
     def __repr__(self):
         return str(self.identifier)
