@@ -14,7 +14,6 @@ import os
 
 
 BROKER_URL = 'pyamqp://docker.for.mac.localhost:32771//'
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
