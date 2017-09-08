@@ -13,7 +13,8 @@ import djcelery
 import os
 
 djcelery.setup_loader()
-BROKER_URL = 'pyamqp://docker.for.mac.guest@localhost:32771//'
+BROKER_URL = 'pyamqp://docker.for.mac.localhost:32771//'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'communications.apps.CommunicationsConfig',
     'rest_framework.authtoken',
     'djcelery',
+    'django_celery_beat',
 ]
 
 REST_FRAMEWORK = {
