@@ -1,7 +1,9 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+
 from communications.models import *
 from user_model.models import *
+
 """
 Updates all of the other parts of the database.
 """
@@ -53,13 +55,13 @@ def update_all(sender, **kwargs):
                         try:
                             survey = Survey.objects.get(questionData["taskId"])
                         except:
-                            survey = Survey(UUID=questionData["taskId"],timestamp=askDateTime,deletedIndicator=False,Name="Activity Debrief")
+                            survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime, deletedIndicator=False,
+                                            Name="Activity Debrief")
                         survey.save()
 
                         """
                         make a question
                         """
-
 
                         quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
                                          deletedIndicator=False,
@@ -83,13 +85,11 @@ def update_all(sender, **kwargs):
                             user = User.objects.get(identifier=source)
                             user.Last_day_reported = askDay
                             user.save()
-                            answer = Answer(UUID=report.id,timestamp=createdat,deletedIndicator=False,question=quest,
-                                            user=user,Answer_text=answer,Answered=bool(answer))
+                            answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False, question=quest,
+                                            user=user, Answer_text=answer, Answered=bool(answer))
                             answer.save()
                         except():
                             pass
 
         except(KeyError):
             pass
-
-
