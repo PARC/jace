@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'communications.apps.CommunicationsConfig',
     'rest_framework.authtoken',
-    'djcelery',
     'django_celery_beat',
+    'django_celery_results',
 ]
 
 REST_FRAMEWORK = {
