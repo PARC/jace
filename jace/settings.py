@@ -9,10 +9,10 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-import djcelery
+
 import os
 
-djcelery.setup_loader()
+
 BROKER_URL = 'pyamqp://docker.for.mac.localhost:32771//'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
