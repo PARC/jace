@@ -5,8 +5,7 @@ from celery import Celery
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'jace.settings')
 
-app = Celery('jace',broker='pyamqp://docker.for.mac.localhost:32771//',backend=os.environ['REDIS'].split(':')[0],
-             port=os.environ['REDIS'])
+app = Celery('jace',broker='pyamqp://docker.for.mac.localhost:32771//',backend="redis://docker.for.mac.localhost:32774//")
 
 # Using a string here means the worker doesn't have to serialize
 # the configuration object to child processes.
