@@ -12,8 +12,8 @@ class report_list(generics.ListCreateAPIView):
     """
     List all Reports, or create a new Report.
     """
-    queryset = debugReport.objects.all()
-    serializer_class = DebugReportSeriealizer
+    queryset = Report.objects.all()
+    serializer_class = ReportSeriealizer
 
 
 class user_list(generics.ListCreateAPIView):

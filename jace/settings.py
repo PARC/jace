@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-
+import huey
 
 BROKER_URL = 'pyamqp://docker.for.mac.localhost:32771//'
 
@@ -44,8 +44,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'communications.apps.CommunicationsConfig',
     'rest_framework.authtoken',
-    'django_celery_beat',
-    'django_celery_results',
+    'huey.contrib.djhuey',
 ]
 
 REST_FRAMEWORK = {

@@ -45,6 +45,10 @@ class User(models.Model):
 
 
 class Survey(models.Model):
+    """
+
+    Survey Rep
+    """
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()

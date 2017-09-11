@@ -96,7 +96,7 @@ Answered = models.BooleanField()"""
 
     def test_make_question(self):
         print("testing questions")
-        for report in debugReport.objects.all():
+        for report in Report.objects.all():
             try:
                 data = report.data
                 event = report.data['event']

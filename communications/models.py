@@ -26,7 +26,11 @@ class FittleReport(models.Model):
         return str(self._id)
 
 
-class debugReport(models.Model):
+class Report(models.Model):
+    """
+
+    Takes all reports
+    """
     studyName = models.CharField(max_length=MEDIUM_LENGTH)
     kind = models.CharField(max_length=MEDIUM_LENGTH)
     data = fields.JSONField()

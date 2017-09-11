@@ -9,9 +9,9 @@ Updates all of the other parts of the database.
 """
 
 
-@receiver(post_save, sender=debugReport)
+@receiver(post_save, sender=Report)
 def update_all(sender, **kwargs):
-    for report in debugReport.objects.all():
+    for report in Report.objects.all():
         try:
             data = report.data
             event = report.data['event']

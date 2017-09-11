@@ -6,7 +6,11 @@ from celery import Celery
 
 
 
-
+#####################
+"""
+Change Intervention on a regular schedule
+"""
+#######################
 def change_time_intervention(user, intervention):
     """
 
@@ -19,7 +23,9 @@ def change_time_intervention(user, intervention):
         outgoing.change_condition(decision)
         change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
                                                                                                                   "no"]))
-
+##########################
+"Change for a Missed day Rule Self Compassion"
+#########################
 
 def change_for_miss(user):
     """
@@ -31,11 +37,18 @@ def change_for_miss(user):
         decision = {"user": user, "SC": random.choice([True, False])}
         outgoing.question_to_server()
 
+####################
+"""
+Upkeep
 
-def upkeep(user):
+"""
+#####################
+
+
+def upkeep():
     """
-
-    :param user: user to change
+    Upkeep updates each users day, and then calls all of the rules
+    :param None
     :return:
     """
 
@@ -45,3 +58,6 @@ def upkeep(user):
         change_time_intervention(user, "implementationIntention")
         change_time_intervention(user, "Control")
         change_for_miss(user)
+
+if __name__ == "__main__":
+    upkeep()
