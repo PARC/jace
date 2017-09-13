@@ -53,11 +53,12 @@ def upkeep():
     """
 
     for user in User.objects.all():
-        user.Days_since_start += 1
-        change_time_intervention(user, "SelfAffirmation")
-        change_time_intervention(user, "implementationIntention")
-        change_time_intervention(user, "Control")
-        change_for_miss(user)
+        user.Days_since_start += 1  # update the day
+        change_time_intervention(user, "SelfAffirmation")  # check self aff
+        change_time_intervention(user, "implementationIntention")  # check implementation intention
+        change_time_intervention(user, "Control")  # check control
+        change_for_miss(user)  # check for miss.
 
 if __name__ == "__main__":
     upkeep()
+    print("Running")

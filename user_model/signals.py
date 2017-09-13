@@ -11,6 +11,12 @@ Updates all of the other parts of the database.
 
 @receiver(post_save, sender=Report)
 def update_all(sender, **kwargs):
+    """
+    updates database eachtime a event is posted
+    :param sender:
+    :param kwargs:
+    :return:
+    """
     for report in Report.objects.all():
         try:
             data = report.data
@@ -38,6 +44,8 @@ def update_all(sender, **kwargs):
                 responceType = questionData["responseFormat"]
                 source = report.source
                 print("Workings")
+                """
+                """
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
