@@ -145,4 +145,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 pool = ConnectionPool(host='docker.for.mac.localhost', port=36379, max_connections=20)
-HUEY = RedisHuey('my-app', connection_pool=pool)
+HUEY = RedisHuey('jace', connection_pool=pool)
