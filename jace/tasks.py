@@ -26,8 +26,7 @@ print(currTime.format("HH"))
 print(time.format("HH:mm"))
 
 
-
-@periodic_task(crontab(minute='0', hour='3'))
+@periodic_task(crontab(minute='*/5'))
 def runupkeep():
     utc = arrow.utcnow()
     currTime = utc.to("US/Hawaii")
