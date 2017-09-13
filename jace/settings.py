@@ -144,7 +144,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
-
-pool = ConnectionPool(host='localhost', port=6379, max_connections=20)
+pool = ConnectionPool(host='localhost', port=36379, max_connections=20)
 HUEY = RedisHuey('my-app', connection_pool=pool)
