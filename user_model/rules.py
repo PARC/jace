@@ -1,10 +1,6 @@
 import random
-from communications import outgoing
-from communications.outgoing import change_condition
+from communications.outgoing import change_condition, question_to_server
 from user_model.models import User
-from celery import Celery
-
-
 
 #####################
 """
@@ -20,7 +16,7 @@ def change_time_intervention(user, intervention):
     """
     if user.time_to_change():
         decision = {"user": user, intervention: random.choice([True, False])}
-        outgoing.change_condition(decision)
+        change_condition(decision)
         change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
                                                                                                                   "no"]))
 ##########################
@@ -35,7 +31,7 @@ def change_for_miss(user):
     """
     if (user.Days_since_start - user.Last_day_reported) > 3:
         decision = {"user": user, "SC": random.choice([True, False])}
-        outgoing.question_to_server()
+        question_to_server()
 
 ####################
 """
