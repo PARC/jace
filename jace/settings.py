@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 import huey
+from huey import RedisHuey
+from redis import ConnectionPool
 
 BROKER_URL = 'pyamqp://docker.for.mac.localhost:32771//'
 
@@ -137,8 +139,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-CELERY_TIMEZONE = "America/Los_Angeles"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+
+pool = ConnectionPool(host='my.redis.host', port=6379, max_connections=20)
+HUEY = RedisHuey('my-app', connection_pool=pool)

@@ -58,11 +58,9 @@ def update_all(sender, **kwargs):
                             survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime, deletedIndicator=False,
                                             Name="Activity Debrief")
                         survey.save()
-
                         """
                         make a question
                         """
-
                         quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
                                          deletedIndicator=False,
                                          responceType=responceType, tag=tag, choices=choices,
