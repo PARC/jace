@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'communications.apps.CommunicationsConfig',
     'rest_framework.authtoken',
     'huey.contrib.djhuey',
-    'jace.tasks',
+    'user_model.tasks',
 ]
 
 REST_FRAMEWORK = {
