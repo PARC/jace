@@ -11,12 +11,3 @@ def change_condition(studyId,attribute,value):
     payload = {"studyId":studyId,"attribute":attribute,"value":value}
     r = requests.post('http://localhost:3000/serviceapi/participants/update/:token', json=payload)
     print(r)
-
-Data={"studyId":"1234","attribute": "settings.implementationIntention","value": "yes"}
-Data2={"studyId":"1234","attribute": "settings.selfAffirmation","value": "no"}
-Data3={"studyId":"1234","attribute": "settings.control","value": "no"}
-change_condition("1234","settings.implementationIntention","yes")
-
-
-
-
