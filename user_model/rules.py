@@ -50,6 +50,7 @@ def upkeep():
 
     for user in User.objects.all():
         user.Days_since_start += 1  # update the day
+        user.save()
         change_time_intervention(user, "SelfAffirmation")  # check self aff
         change_time_intervention(user, "implementationIntention")  # check implementation intention
         change_time_intervention(user, "Control")  # check control
