@@ -9,7 +9,7 @@ from communications.models import *
 from .models import *
 
 class QuestionModelTests(TestCase):
-    u = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
+    u = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
              Days_since_start=14, Days_since_last_report=2)
 
     """
@@ -65,9 +65,9 @@ Answered = models.BooleanField()"""
         tests if given a date that is not every two weeks it returns false
         """
         time = timezone.now() + datetime.timedelta(days=30)
-        non_twoweek = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
+        non_twoweek = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
                            deletedIndicator=False, Days_since_start=17, Days_since_last_report=2)
-        is_twoweek = User(identifier="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
+        is_twoweek = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
                           deletedIndicator=False, Days_since_start=14, Days_since_last_report=2)
         self.assertIs(non_twoweek.time_to_change(), False)
         self.assertIs(is_twoweek.time_to_change(), True)
@@ -127,7 +127,7 @@ Answered = models.BooleanField()"""
                             """
                             make a new user
                             """
-                            u = User(identifier=report.source, language='eng', UUID=report.id,
+                            u = User(studyId=report.source, language='eng', UUID=report.id,
                                      timestamp=createdat,
                                      deletedIndicator=False, Days_since_start=0,
                                      Days_since_last_report=0)

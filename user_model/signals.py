@@ -51,10 +51,10 @@ def update_all(sender, **kwargs):
                         """
                         make a new user
                         """
-                        u = User(identifier=report.source, language='eng', UUID=report.id,
+                        u = User(studyId=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
                                  deletedIndicator=False, Days_since_start=0,
-                                 Last_day_reported=0)
+                                 Last_day_reported=0, Days_since_activity_start=0)
                         u.save()
                     if name == "activityDebrief":
                         """
@@ -88,7 +88,7 @@ def update_all(sender, **kwargs):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
     Answered = models.BooleanField()"""
-                            user = User.objects.get(identifier=source)
+                            user = User.objects.get(studyId=source)
                             user.Last_day_reported = askDay
                             user.save()
                             answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False, question=quest,

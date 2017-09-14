@@ -12,19 +12,20 @@ class User(models.Model):
     The User's Model Representation
 
     """
-    identifier = models.CharField(max_length=UUID_FIELD)
+    studyId = models.CharField(max_length=UUID_FIELD)
     language = models.CharField(max_length=UUID_FIELD)
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
     Days_since_start = models.IntegerField()
     Last_day_reported = models.IntegerField()
+    Days_since_activty_start = models.IntegerField(blank=True)
 
     def __repr__(self):
         return str(self.identifier)
 
     def to_dictionary(self):
-        return {"identifier": self.identifier, "language": self.language, "UUID": self.UUID,
+        return {"studyId": self.identifier, "language": self.language, "UUID": self.UUID,
                 "Days_since_Start": self.Days_since_start, "Last_report": self.Days_since_last_report,
                 "time_to_change": self.time_to_change()}
 

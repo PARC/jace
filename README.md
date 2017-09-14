@@ -30,4 +30,17 @@
 
 
 # Transactions
+
+
+
+# commands
+ 
+ ## Update the day and check all rules (run update)
+ python manage.py runscript updates 
+ ## Run the server
+ ./run_local
+ ## run setup
+ sh setup.sh
+ 
+ 
  
