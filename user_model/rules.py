@@ -15,8 +15,6 @@ def change_time_intervention(user, intervention):
     :posts: value to app
     """
     if user.time_to_change():
-        decision = {"user": user, intervention: random.choice([True, False])}
-        change_condition(decision)
         change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
                                                                                                                   "no"]))
 ##########################
@@ -31,12 +29,11 @@ def change_for_miss(user):
     """
     if (user.Days_since_start - user.Last_day_reported) > 3:
         decision = {"user": user, "SC": random.choice([True, False])}
-        question_to_server()
+        # question_to_server()
 
 ####################
 """
 Upkeep
-
 """
 #####################
 
