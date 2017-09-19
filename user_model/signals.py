@@ -46,13 +46,7 @@ def update_all(sender, **kwargs):
                 source = report.source
                 """
                 """
-                try:
-                    u = User.objects.get(studyId=source)
-                    Days_since_start = u.Days_since_start
-                    Days_since_activity_start = u.Days_since_activity_start
-                except:
-                    Days_since_start = 0
-                    Days_since_activity_start = 0
+
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
@@ -60,8 +54,7 @@ def update_all(sender, **kwargs):
                         """
                         u = User(studyId=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
-                                 deletedIndicator=False, Days_since_start=Days_since_start, Last_day_reported=0,
-                                 Days_since_activty_start=Days_since_activity_start)
+                                 deletedIndicator=False, Last_day_reported=0)
                         u.save()
                     if name == "activityDebrief":
                         """
