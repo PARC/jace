@@ -37,11 +37,11 @@ def change_for_miss(user):
     :param user:
     :return:
     """
+
+    print(user.Days_since_activty_start - user.Last_day_reported > 3)
     if (user.Days_since_activty_start - user.Last_day_reported) > 3:
-        if not user.time_to_change():
-            change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
-                             value=random.choice(["yes",
-                                                  "no"]))
+        change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
+                         value=random.choice(["yes", "no"]))
             # question_to_server()
 
 
