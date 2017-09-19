@@ -46,18 +46,18 @@ def update_all(sender, **kwargs):
                 source = report.source
                 """
                 """
+                try:
+                    u = User.objects.get(studyId=source)
+                    Days_since_start = u.Days_since_start
+                    Days_since_activity_start = u.Days_since_activity_start
+                except:
+                    Days_since_start = 0
+                    Days_since_activity_start = 0
                 if report.kind == "answer":
                     if name == "getDisplayName":
                         """
                         make a new user
                         """
-                        try:
-                            u = User.objects.get(studyId=source)
-                            Days_since_start = u.Days_since_start
-                            Days_since_activity_start = u.Days_since_activity_start
-                        except:
-                            Days_since_start = 0
-                            Days_since_activity_start = 0
                         u = User(studyId=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
                                  deletedIndicator=False, Days_since_start=Days_since_start, Last_day_reported=0,
