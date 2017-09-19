@@ -51,11 +51,15 @@ def update_all(sender, **kwargs):
                         """
                         make a new user
                         """
-                        u = User(studyId=report.source, language='eng', UUID=report.id,
-                                 timestamp=createdat,
-                                 deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
-                                 Days_since_activty_start=0)
-                        u.save()
+                        try:
+                            u = User.objects.get(studyId=source)
+                            u.save()
+                        except:
+                            u = User(studyId=report.source, language='eng', UUID=report.id,
+                                     timestamp=createdat,
+                                     deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
+                                     Days_since_activty_start=0)
+                            u.save()
                     if name == "activityDebrief":
                         """
                         make a survey
