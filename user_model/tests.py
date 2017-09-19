@@ -126,11 +126,19 @@ Answered = models.BooleanField()"""
                         if name == "getDisplayName":
                             """
                             make a new user
+                            studyId = models.CharField(max_length=UUID_FIELD)
+    language = models.CharField(max_length=UUID_FIELD)
+    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
+    timestamp = models.DateTimeField()
+    deletedIndicator = models.BooleanField()
+    Days_since_start = models.IntegerField()
+    Last_day_reported = models.IntegerField()
+    Days_since_activty_start = models.IntegerField(blank=True)
                             """
                             u = User(studyId=report.source, language='eng', UUID=report.id,
                                      timestamp=createdat,
                                      deletedIndicator=False, Days_since_start=0,
-                                     Days_since_last_report=0)
+                                     Last_day_reported=0, Days_since_activty_start=0)
                             u.save()
                         if name == "activityDebrief":
 
