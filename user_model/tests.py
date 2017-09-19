@@ -99,6 +99,46 @@ Answered = models.BooleanField()"""
 
     def test_make_question(self):
         print("testing questions")
+        r = Report(studyName="KPH", kind="answer", data={
+            "event": "answerQuestion",
+            "question": {
+                "_id": "EwPYgGqnThxQEXqSw",
+                "source": "silver@parc.com",
+                "tag": "you",
+                "name": "getDisplayName",
+                "text": "Set the public display name to be seen by your team members.",
+                "props": {
+                    "minLength": 2,
+                    "textLabel": "Display name",
+                    "startWithChar": True,
+                    "textPlaceholder": "Display name (min 2 chars)"
+                },
+                "answer": "",
+                "askDay": "-1",
+                "notify": "false",
+                "taskId": "",
+                "answers": {},
+                "askDate": "2017-09-18T07:00:00.000Z",
+                "askTime": "07:00",
+                "choices": [],
+                "expired": False,
+                "answered": False,
+                "sequence": 11,
+                "username": "silver@parc.com",
+                "createdAt": "2017-09-19T18:36:22.829Z",
+                "expireDay": "28",
+                "expireDate": "2017-10-17T07:00:00.000Z",
+                "expireTime": "23:59",
+                "askDatetime": "2017-09-18T14:00:00.000Z",
+                "noneAllowed": False,
+                "answeredOnDay": "",
+                "expireDatetime": "2017-10-18T06:59:00.000Z",
+                "responseFormat": "text",
+                "preferenceToSet": "bio.displayName"
+            }, "eventName": "answerQuestion"
+        }
+                   )
+        r.save()
         for report in Report.objects.all():
             try:
                 data = report.data
@@ -172,6 +212,7 @@ Answered = models.BooleanField()"""
             except(KeyError):
                 print("You got a key error")
             self.assertTrue(quest in Question.objects.all())
+
 
 
 
