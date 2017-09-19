@@ -53,13 +53,16 @@ def update_all(sender, **kwargs):
                         """
                         try:
                             u = User.objects.get(studyId=source)
-                            u.save()
+                            Days_since_start = u.Days_since_start
+                            Days_since_activity_start = u.Days_since_activity_start
                         except:
-                            u = User(studyId=report.source, language='eng', UUID=report.id,
-                                     timestamp=createdat,
-                                     deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
-                                     Days_since_activty_start=0)
-                            u.save()
+                            Days_since_start = 0
+                            Days_since_activity_start = 0
+                        u = User(studyId=report.source, language='eng', UUID=report.id,
+                                 timestamp=createdat,
+                                 deletedIndicator=False, Days_since_start=Days_since_start, Last_day_reported=0,
+                                 Days_since_activty_start=Days_since_activity_start)
+                        u.save()
                     if name == "activityDebrief":
                         """
                         make a survey
@@ -92,10 +95,11 @@ def update_all(sender, **kwargs):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
     Answered = models.BooleanField()"""
-                            u.Last_day_reported = askDay
-                            u.save()
+                            user = User.objects.get(studyId=source)
+                            user.Last_day_reported = askDay
+                            user.save()
                             answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False, question=quest,
-                                            user=u, Answer_text=answer, Answered=bool(answer))
+                                            user=user, Answer_text=answer, Answered=bool(answer))
                             answer.save()
                         except():
                             pass
