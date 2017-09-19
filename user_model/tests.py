@@ -10,8 +10,7 @@ from .models import *
 
 class QuestionModelTests(TestCase):
     u = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(), deletedIndicator=False,
-             Days_since_start=0,
-             Last_day_reported=0, Days_since_activty_start=0)
+             Last_day_reported=0)
 
     """
     uuid = models.CharField(max_length=UUID_FIELD)
@@ -67,11 +66,11 @@ Answered = models.BooleanField()"""
         """
         time = timezone.now() + datetime.timedelta(days=30)
         non_twoweek = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
-                           deletedIndicator=False, Days_since_start=1,
-                           Last_day_reported=0, Days_since_activty_start=0)
+                           deletedIndicator=False,
+                           Last_day_reported=0)
         is_twoweek = User(studyId="Joel", language="ENG", UUID="12345", timestamp=timezone.now(),
-                          deletedIndicator=False, Days_since_start=0,
-                          Last_day_reported=0, Days_since_activty_start=0)
+                          deletedIndicator=False,
+                          Last_day_reported=0)
         self.assertIs(non_twoweek.time_to_change(), False)
         self.assertIs(is_twoweek.time_to_change(), True)
 
@@ -181,8 +180,7 @@ Answered = models.BooleanField()"""
                             """
                             u = User(studyId=report.source, language='eng', UUID=report.id,
                                      timestamp=createdat,
-                                     deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
-                                     Days_since_activty_start=0)
+                                     deletedIndicator=False, Last_day_reported=0)
                             u.save()
                         if name == "activityDebrief":
                             """
