@@ -1,5 +1,5 @@
 import requests
-
+import random
 
 def question_to_server(question_dict):
     header = {"Content-Type": "application/json"}
@@ -10,6 +10,6 @@ def question_to_server(question_dict):
 def change_condition(studyId,attribute,value):
     header = {"Content-Type": "application/json"}
     payload = {"studyId":studyId,"attribute":attribute,"value":value}
-    r = requests.post('http://localhost:3000/serviceapi/participants/update/:token',
+    r = requests.post('http://docker.for.mac.localhost:3000/serviceapi/participants/update/:token',
                       json=payload)  #set this to whereever the app is located
     print(r)
