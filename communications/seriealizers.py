@@ -1,8 +1,5 @@
 from rest_framework import serializers
-
 from communications.models import *
-
-
 
 
 

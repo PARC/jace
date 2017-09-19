@@ -14,22 +14,10 @@ SUPER_LONG = 9000
 DBZ_LENGTH = 32365
 
 
-class FittleReport(models.Model):
-    _id = models.CharField(max_length=UUID_FIELD, primary_key=True)
-    studyName = models.CharField(max_length=MEDIUM_LENGTH)
-    kind = models.CharField(max_length=MEDIUM_LENGTH)
-    source = models.CharField(max_length=SHORT_LENGTH)
-    data = fields.JSONField()
-    shared = fields.JSONField()
-    createdAt = models.CharField(max_length=SHORT_LENGTH)
-    def __repr__(self):
-        return str(self._id)
-
-
 class Report(models.Model):
     """
 
-    Takes all reports
+    Takes all reports from incoming app
     """
     studyName = models.CharField(max_length=MEDIUM_LENGTH)
     kind = models.CharField(max_length=MEDIUM_LENGTH)

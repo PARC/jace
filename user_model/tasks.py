@@ -13,7 +13,7 @@ Scheduler
 @periodic_task(crontab(hour='*/1'))
 def runupkeep():
     """
-    check every hour
+    check every hour if the time is 04:00 in hawaii
     :return:
     """
     utc = arrow.utcnow().to("US/Hawaii")  # get time in UTC

@@ -5,7 +5,7 @@ from communications.models import *
 from user_model.models import *
 
 """
-Updates all of the other parts of the database.
+Updates all of the other parts of the database. This activates whenever there is a post made to communications/reports.
 """
 
 
@@ -17,24 +17,25 @@ def update_all(sender, **kwargs):
     :param kwargs:
     :return:
     """
-    for report in Report.objects.all():
-        try:
+    for report in Report.objects.all():  # This runs the update on all items that have been reported
+        try:  # makes sure report contains right data type
             data = report.data
-            event = report.data['event']
             if report.data["event"] == "answerQuestion":
                 """
-                set data into variabbles, de dictafy
+                set data into variabbles, read the dictionary, place variables into variables.
+
                 """
-                questionData = data["question"]
+                questionData = data[
+                    "question"]  # this contains a subdictionary of all the data about a question that was asked.
                 choices = questionData["choices"]
                 answered_on_day = questionData["answeredOnDay"]
-                askDate = questionData["askDate"]
-                askDay = questionData["askDay"]
-                askDateTime = questionData["askDatetime"]
+                askDate = questionData["askDate"]  # timestamp
+                askDay = questionData["askDay"]  # numeric represenration of day, is iterable
+                askDateTime = questionData["askDatetime"]  #timestamp
                 askTime = questionData["askTime"]
-                expireDate = questionData['expireDay']
+                expireDate = questionData['expireDay']  #numeric
                 expireTime = questionData['expireTime']
-                sequence = questionData['sequence']
+                sequence = questionData['sequence']  #numeric
                 name = questionData['name']
                 tag = questionData['tag']
                 text = questionData['text']
@@ -43,7 +44,6 @@ def update_all(sender, **kwargs):
                 answers = questionData["answers"]
                 responceType = questionData["responseFormat"]
                 source = report.source
-                print("Workings")
                 """
                 """
                 if report.kind == "answer":

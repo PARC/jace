@@ -59,6 +59,9 @@ class Survey(models.Model):
         return self.Names
 
 class Question(models.Model):
+    """
+    questions model
+    """
     question_text = models.CharField(max_length=SHORT_LENGTH)
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
@@ -86,6 +89,9 @@ class Question(models.Model):
 
 
 class Answer(models.Model):
+    """
+    answers model
+    """
     UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
     timestamp = models.DateTimeField()
     deletedIndicator = models.BooleanField()
