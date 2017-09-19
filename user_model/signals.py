@@ -53,8 +53,8 @@ def update_all(sender, **kwargs):
                         """
                         u = User(studyId=report.source, language='eng', UUID=report.id,
                                  timestamp=createdat,
-                                 deletedIndicator=False, Days_since_start=0,
-                                 Last_day_reported=0, Days_since_activity_start=0)
+                                 deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
+                                 Days_since_activty_start=0)
                         u.save()
                     if name == "activityDebrief":
                         """

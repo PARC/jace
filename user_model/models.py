@@ -19,7 +19,7 @@ class User(models.Model):
     deletedIndicator = models.BooleanField()
     Days_since_start = models.IntegerField()
     Last_day_reported = models.IntegerField()
-    Days_since_activty_start = models.IntegerField(blank=True)
+    Days_since_activty_start = models.IntegerField()
 
     def __repr__(self):
         return str(self.identifier)
