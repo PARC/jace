@@ -56,7 +56,7 @@ class ReportDetail(generics.RetrieveUpdateDestroyAPIView):
     """
     Retrieve, update or delete a report.
     """
-    queryset = FittleReport.objects.all()
+    queryset = Report.objects.all()
     serializer_class = ReportSeriealizer
 
 
