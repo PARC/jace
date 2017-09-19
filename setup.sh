@@ -7,5 +7,5 @@ python3 manage.py makemigrations user_model
 python3 manage.py migrate
 ./run_local
 python3 manage.py test user_model
-python3 manage.py run_huey
+
 
