@@ -13,6 +13,3 @@ def change_condition(studyId,attribute,value):
     r = requests.post('http://localhost:3000/serviceapi/participants/update/:token',
                       json=payload)  #set this to whereever the app is located
     print(r)
-
-
-change_condition("silver@parc.com", "selfAffirmation", "yes")
