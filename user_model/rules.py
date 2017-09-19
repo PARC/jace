@@ -17,10 +17,12 @@ def change_time_intervention(user, intervention):
     :param intervention: which intervention you want to change
     :posts: value to app
     """
+    print(user.Days_since_activty_start % 14 == 0)
     if user.Days_since_activty_start % 14 == 0:
         change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
                                                                                                                   "no"]))
         user.Days_since_activty_start = 1
+        user.save()
 
 
 ##########################
@@ -36,7 +38,7 @@ def change_for_miss(user):
     :return:
     """
     if (user.Days_since_activty_start - user.Last_day_reported) > 3:
-        user.Days_since_start += 2
+        user. += 2
         if not user.time_to_change():
             change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
                              value=random.choice(["yes",
