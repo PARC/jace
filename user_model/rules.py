@@ -10,7 +10,7 @@ Change Intervention on a regular schedule
 
 
 #######################
-def change_time_intervention(user, intervention):
+def change_time_intervention(user, interventionList):
     """
 
     :param user: user object
@@ -19,7 +19,9 @@ def change_time_intervention(user, intervention):
     """
     print(user.Days_since_activty_start % 14 == 0)
     if user.Days_since_activty_start % 14 == 0:
-        change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
+        for intervention in interventionList:
+            change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention),
+                             value=random.choice(["yes",
                                                                                                                   "no"]))
         user.Days_since_activty_start = 1
         user.save()
@@ -65,9 +67,8 @@ def upkeep():
         user.Days_since_start += 1  # update the day
         user.Days_since_activty_start += 1
         user.save()
-        change_time_intervention(user, "SelfAffirmation")  # check self aff
-        change_time_intervention(user, "implementationIntention")  # check implementation intention
-        change_time_intervention(user, "Control")  # check control
+        interventionList = ["SelfAffirmation", "implementationIntention", "Control"]
+        change_time_intervention(user, interventionList)  # check self aff
         change_for_miss(user)  # check for miss.
 
 
