@@ -40,8 +40,8 @@ def change_for_miss(user):
     :return:
     """
 
-    print(user.Days_since_activty_start - user.Last_day_reported)
-    if (user.Days_since_activty_start - user.Last_day_reported) > 3:
+    print(user.Days_since_start - user.Last_day_reported)
+    if (user.Days_since_start - user.Last_day_reported) > 3:
         change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
                          value=random.choice(["yes", "no"]))
             # question_to_server()
