@@ -17,10 +17,10 @@ def change_time_intervention(user, intervention):
     :param intervention: which intervention you want to change
     :posts: value to app
     """
-    if user.time_to_change():
+    if user.Days_since_activty_start % 14 == 0:
         change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention), value=random.choice(["yes",
                                                                                                                   "no"]))
-        user.Days_since_activty_start = 0
+        user.Days_since_activty_start = 1
 
 
 ##########################
