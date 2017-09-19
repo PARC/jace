@@ -139,24 +139,31 @@ Answered = models.BooleanField()"""
         }
                    )
         r.save()
-        for report in Report.objects.all():
-            try:
+        """
+           updates database eachtime a event is posted
+           :param sender:
+           :param kwargs:
+           :return:
+           """
+        for report in Report.objects.all():  # This runs the update on all items that have been reported
+            try:  # makes sure report contains right data type
                 data = report.data
-                event = report.data['event']
-                if event == "answerQuestion":
+                if report.data["event"] == "answerQuestion":
                     """
-                    set data into variabbles, de dictafy
+                    set data into variabbles, read the dictionary, place variables into variables.
+
                     """
-                    questionData = data["question"]
+                    questionData = data[
+                        "question"]  # this contains a subdictionary of all the data about a question that was asked.
                     choices = questionData["choices"]
                     answered_on_day = questionData["answeredOnDay"]
-                    askDate = questionData["askDate"]
-                    askDay = questionData["askDay"]
-                    askDateTime = questionData["askDatetime"]
+                    askDate = questionData["askDate"]  # timestamp
+                    askDay = questionData["askDay"]  # numeric represenration of day, is iterable
+                    askDateTime = questionData["askDatetime"]  # timestamp
                     askTime = questionData["askTime"]
-                    expireDate = questionData['expireDay']
+                    expireDate = questionData['expireDay']  # numeric
                     expireTime = questionData['expireTime']
-                    sequence = questionData['sequence']
+                    sequence = questionData['sequence']  # numeric
                     name = questionData['name']
                     tag = questionData['tag']
                     text = questionData['text']
@@ -164,58 +171,62 @@ Answered = models.BooleanField()"""
                     createdat = questionData['createdAt']
                     answers = questionData["answers"]
                     responceType = questionData["responseFormat"]
-                    print("Workings")
+                    source = report.source
+                    """
+                    """
                     if report.kind == "answer":
                         if name == "getDisplayName":
                             """
                             make a new user
-                            studyId = models.CharField(max_length=UUID_FIELD)
-    language = models.CharField(max_length=UUID_FIELD)
-    UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
-    timestamp = models.DateTimeField()
-    deletedIndicator = models.BooleanField()
-    Days_since_start = models.IntegerField()
-    Last_day_reported = models.IntegerField()
-    Days_since_activty_start = models.IntegerField(blank=True)
                             """
                             u = User(studyId=report.source, language='eng', UUID=report.id,
                                      timestamp=createdat,
-                                     deletedIndicator=False, Days_since_start=0,
-                                     Last_day_reported=0, Days_since_activty_start=0)
+                                     deletedIndicator=False, Days_since_start=0, Last_day_reported=0,
+                                     Days_since_activty_start=0)
                             u.save()
                         if name == "activityDebrief":
-
                             """
                             make a survey
-
                             """
                             try:
                                 survey = Survey.objects.get(questionData["taskId"])
                             except:
                                 survey = Survey(UUID=questionData["taskId"], timestamp=askDateTime,
-                                                deletedIndicator=False, Name="Activity Debrief")
+                                                deletedIndicator=False,
+                                                Name="Activity Debrief")
                             survey.save()
+                            """
+                            make a question
+                            """
+                            quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
+                                             deletedIndicator=False,
+                                             responceType=responceType, tag=tag, choices=choices,
+                                             referenceToSurvey=survey,
+                                             reminders=False, askDate=askDay, askTime=askTime,
+                                             preferenceToSet="Nothing",
+                                             answers=answers, expireDate=expireDate, expireTime=expireTime,
+                                             Notify=False,
+                                             Sequence=sequence, Name=name)
+                            quest.save()
+
                             try:
-                                quest = Question(question_text=text, UUID=report.id, timestamp=createdat,
-                                                 deletedIndicator=False,
-                                                 responceType=responceType, tag=tag, choices=choices,
-                                                 referenceToSurvey=survey,
-                                                 reminders=False, askDate=askDay, askTime=askTime,
-                                                 preferenceToSet="Nothing",
-                                                 answers=answers, expireDate=expireDate, expireTime=expireTime,
-                                                 Notify=False,
-                                                 Sequence=sequence, Name=name)
-                                quest.save()
+                                """UUID = models.CharField(max_length=UUID_FIELD, primary_key=True)
+        timestamp = models.DateTimeField()
+        deletedIndicator = models.BooleanField()
+        question = models.ForeignKey(Question, on_delete=models.CASCADE)
+        user = models.ForeignKey(User, on_delete=models.CASCADE)
+        Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
+        Answered = models.BooleanField()"""
+                                user = User.objects.get(studyId=source)
+                                user.Last_day_reported = askDay
+                                user.save()
+                                answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False,
+                                                question=quest,
+                                                user=user, Answer_text=answer, Answered=bool(answer))
+                                answer.save()
                             except():
-                                print("error is here")
+                                pass
 
             except(KeyError):
-                print("You got a key error")
-            self.assertTrue(quest in Question.objects.all())
-
-
-
-
-
-
-
+                pass
+            self.assertTrue(user in User.objects.all())
