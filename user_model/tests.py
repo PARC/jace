@@ -220,6 +220,7 @@ Answered = models.BooleanField()"""
                                 user = User.objects.get(studyId=source)
                                 user.Last_day_reported = askDay
                                 user.save()
+                                self.assertTrue(user in User.objects.all())
                                 answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False,
                                                 question=quest,
                                                 user=user, Answer_text=answer, Answered=bool(answer))
@@ -229,4 +230,3 @@ Answered = models.BooleanField()"""
 
             except(KeyError):
                 pass
-            self.assertTrue(user in User.objects.all())
