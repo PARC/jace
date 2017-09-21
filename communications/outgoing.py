@@ -1,6 +1,9 @@
 import requests
 import random
 
+"""
+controls the
+"""
 def question_to_server(question_dict):
     header = {"Content-Type": "application/json"}
     payload = question_dict

@@ -1,37 +1,46 @@
 # jace
-    HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded projects
+   HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded projects
   ## settings.py
-    django settings
+   django settings
   ## config.py
-    scheduler settings
+   scheduler settings
   ## urls.py
-    top level API links
+   main subfields for API links
         
 
 # user_model
-    contains Infromation on the user,questions, answers
+   contains Infromation on the user,questions, answers
     
    ## rules.py
-    rules for updatings users
+   rules for updatings users
    ## models.py
-    locattion of django models
+   locattion of django models
    ## signal.py
-        this is where messages are processed at the moment of posting. It works by looking for a signal
-        that a item was posted to communications, and then sorts it into the user model's models. It also has 
-        the feature of updating the last heard from date for a particular user.
+   this is where messages are processed at the moment of posting. It works by looking for a signal
+   that a item was posted to communications, and then sorts it into the user model's models. It also has 
+   the feature of updating the last heard from date for a particular user.
    ## serializer.py
-    serialized the user models
+   serialized the user models
    ## tasks.py
-        MUST be names tasks for HUEY to find it, contains the scheduled item, and the schudler.
+   MUST be names tasks for HUEY to find it, contains the scheduled item, and the schudler.
+   ## urls.py
+   placeholder for future urls, don't delete
 
 # communications
     contains all programs invovled in the API
    ##views.py
-      API GENERATION ENGINE
-   ##URLS.PY
-        REGEX URL LINKS FOR API
+   creates, and serializes objects when the api is called.
+   ## serializer.py
+   serializor for the reports objects
    ## models.py
-    location of reports models for django
+   Contains a catch all store for all incoming messages to jace, stores information about the data and source
+   as reports
+   ## urls.py
+   This is where the api is generated. It uses regex to build, note however all of these are in
+   the subdirectory communications. Example  
+```
+   localhost:8888/communications/reports/
+```
 
 
 # Transactions
@@ -49,8 +58,19 @@
  
  
 # issues
-   ## typeError message in server readout, 
-        try flushing DB  $ python manage.py flush
+   ## typeError message in server readout,
+   try flushing DB
+        
+          
+```        
+
+$ python manage.py flush
+
+```
+        
+        
+        
+        
    
    ## server not running
         try ./run_local
