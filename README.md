@@ -1,3 +1,14 @@
+#What is jace?
+Jace is Just Another Coaching Engine. HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded projects
+##How does it work?
+Jace accepts incoming posts via its API and then disseminates that information into a user_model.
+The user_model consists of a User, Question, Answer, and Survey. The user_model also contains a rules function, this allows
+updates to the User_Model's models, or updates caused by. 
+
+Normaly when a rule is triggered it tells the communication manager to send a message to the application server.
+This message is to turn on or off a question set. There is also the ability to send a fully loaded question if needed.
+
+
 #Instalation
 1. Make a container in alpine-linux
 2. Make a container for redis and postgres
@@ -63,8 +74,6 @@ sh run_jace.sh
 ```
    localhost:8888/communications/reports/
 ```
-
-
 # Transactions
 
    checks to see if there are any missing datas
@@ -89,10 +98,7 @@ sh run_jace.sh
 $ python manage.py flush
 
 ```
-        
-        
-        
-        
+
    
    ## server not running
         try ./run_local
