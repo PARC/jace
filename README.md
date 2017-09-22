@@ -16,10 +16,23 @@ This message is to turn on or off a question set. There is also the ability to s
 4. Set docker port in alpine-linux to 8000, and the published port to 8888
 5. In alpine-linux general make a new environmental setting called POSTGRES and set it to 32768
 6. Also, in general, make a new environmental setting called REDIS and set it to 32768
-7. $ apk update
-8. $ apk add python3, gcc, git
-9. $ git clone http://github.com/parc/jace.git
-10. $ sh setup.sh
+7. ```$ apk update```
+8. ```$ apk add python3, gcc, git```
+9. ```$ git clone http://github.com/parc/jace.git``` 
+10. ``` sh setup.sh ```
+
+#makeing a rule
+First create your content, in the example json format. Make sure that there is some variable in the attributes section.
+This value controls whether or not a content item will be seen. Note that it is important to have multiple permutations  
+Note the formula is ((2^n)/2) where n is the number of conditions,
+The other basic logic formula for determining if a stimulus should fire is 
+
+if (Item.1 or Item.2 or Item.X), then Target
+
+After content creation, go to usermodels/rules.py and write a function, you may find that you need to add in slots in the
+user model, if so edit accordingly, and then run
+```$ sh update_all_models.sh```
+
 
 # Quick start
 ```
