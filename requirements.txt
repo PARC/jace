@@ -1,7 +1,6 @@
 Django==1.11.4
 django-filter==1.0.4
 djangorestframework==3.6.3
-durable-rules==0.33.117
 gunicorn==19.7.1
 Markdown==2.6.8
 pytz==2017.2
@@ -12,3 +11,5 @@ py3
 psycopg2
 arrow
 huey
+django-extensions
+
