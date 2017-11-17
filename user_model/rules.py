@@ -23,7 +23,7 @@ def change_time_intervention(user, interventionList):
             change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention),
                              value=random.choice(["yes",
                                                                                                                   "no"]))
-        user.Days_since_activty_start = 1
+        user.Days_since_activty_start = 0
         user.save()
 
 
@@ -64,12 +64,12 @@ def upkeep():
     """
 
     for user in User.objects.all():
-        user.Days_since_start += 1  # update the day
-        user.Days_since_activty_start += 1
-        user.save()
         interventionList = ["SelfAffirmation", "implementationIntention", "Control"]
         change_time_intervention(user, interventionList)  # check self aff
         change_for_miss(user)  # check for miss.
+        user.Days_since_start += 1  # update the day
+        user.Days_since_activty_start += 1
+        user.save()
 
 
 if __name__ == "__main__":

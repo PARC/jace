@@ -25,7 +25,7 @@ This message is to turn on or off a question set. There is also the ability to s
 First create your content, in the example json format. Make sure that there is some variable in the attributes section.
 This value controls whether or not a content item will be seen. Note that for some cases it is important to have multiple permutations  
 Note the formula is ((2^n)-n+1) where n is the number of conditions,
-The other basic logic formula for determining if a stimulus should fire is 
+The other basic logic formula 0for determining if a stimulus should fire is 
 
 if (Item.1 or Item.2 or Item.X), then Target
 
