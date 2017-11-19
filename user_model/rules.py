@@ -21,8 +21,7 @@ def change_time_intervention(user, interventionList):
     if user.Days_since_activty_start % 14 == 0:
         for intervention in interventionList:
             change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention),
-                             value=random.choice(["yes",
-                                                                                                                  "no"]))
+                             value=random.choice(["yes", "no"]))
         user.Days_since_activty_start = 0
         user.save()
 
@@ -42,8 +41,13 @@ def change_for_miss(user):
 
     print(user.Days_since_start - user.Last_day_reported)
     if (user.Days_since_start - user.Last_day_reported) > 3:
-        change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
-                         value=random.choice(["yes", "no"]))
+        if user.Days_since_activty_start + 3 % 14 >= 3:
+            change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
+                             value=random.choice(["yes", "no"]))
+        else:
+            pass
+
+
             # question_to_server()
 
 
