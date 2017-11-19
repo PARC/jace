@@ -46,8 +46,6 @@ def change_for_miss(user):
                              value=random.choice(["yes", "no"]))
         else:
             pass
-
-
             # question_to_server()
 
 

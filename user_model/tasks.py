@@ -17,5 +17,5 @@ def runupkeep():
     :return:
     """
     utc = arrow.utcnow().to("US/Hawaii")  # get time in UTC
-    if utc.format("HH:mm") == "4:00":  # is the time 4:00?
+    if utc.format("HH:mm") == "4:00":  # is the time 4:00 in hawaii?
         upkeep()  # run upkeep program
