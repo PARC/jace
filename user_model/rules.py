@@ -45,7 +45,8 @@ def change_for_miss(user):
             change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
                              value=random.choice(["yes", "no"]))
         else:
-            pass
+            change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
+                             value="no")
             # question_to_server()
 
 
@@ -66,7 +67,7 @@ def upkeep():
     """
 
     for user in User.objects.all():
-        interventionList = ["SelfAffirmation", "implementationIntention", "Control"]
+        interventionList = ["selfAffirmation", "implementationIntention", "controlCondition"]
         change_time_intervention(user, interventionList)  # check self aff
         change_for_miss(user)  # check for miss.
         user.Days_since_start += 1  # update the day
@@ -77,3 +78,4 @@ def upkeep():
 if __name__ == "__main__":
     upkeep()
     print("Running")
+
