@@ -30,7 +30,7 @@ The other basic logic formula 0for determining if a stimulus should fire is
 if (Item.1 or Item.2 or Item.X), then Target
 
 After content creation, go to usermodels/rules.py and write a function, you may find that you need to add in slots in the
-user model, if so edit accordingly, and then run
+user model, if so edit accordingly, and then run.
 ```$ sh update_all_models.sh```
 
 
