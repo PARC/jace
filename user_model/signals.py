@@ -91,7 +91,7 @@ user = models.ForeignKey(User, on_delete=models.CASCADE)
 Answer_text = models.CharField(max_length=MEDIUM_LENGTH)
 Answered = models.BooleanField()"""
                         user = User.objects.get(studyId=source)
-                        user.Last_day_reported = user.Days_since_activty_start
+                        user.Last_day_reported = askDay
                         user.save()
                         answer = Answer(UUID=report.id, timestamp=createdat, deletedIndicator=False, question=quest,
                                         user=user, Answer_text=answer, Answered=bool(answer))

@@ -16,7 +16,3 @@ def change_condition(studyId,attribute,value):
     r = requests.post('http://docker.for.mac.localhost:3000/serviceapi/participants/update/woof',
                       json=payload)  #set this to whereever the app is located
     print(r)
-
-
-change_condition(studyId="jckoxs2kjpjqqxxjv", attribute="settings.{}".format("implementationIntention"),
-                 value="yes")
