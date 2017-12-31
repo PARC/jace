@@ -10,7 +10,7 @@ This message is to turn on or off a question set. There is also the ability to s
 
 
 #Instalation
-1. Make a container in alpine-linux
+1. Make a container for alpine-linux
 2. Make a container for redis and postgres
 3. Redis should be set to port 36379, postgres to 32768
 4. Set docker port in alpine-linux to 8000, and the published port to 8888

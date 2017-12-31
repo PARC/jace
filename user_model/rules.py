@@ -18,7 +18,8 @@ def change_time_intervention(user, interventionList):
     :posts: value to app
     """
     print(user.Days_since_activty_start % 14 == 0)
-    if user.Days_since_activty_start % 14 == 0:
+    if user.Days_since_activty_start % 14 == 0:  # checks if the day since activity starts is modulo to the day 14 for
+        #  two week changes
         for intervention in interventionList:
             change_condition(studyId=user.studyId, attribute="settings.{}".format(intervention),
                              value=random.choice(["yes", "no"]))
@@ -40,11 +41,12 @@ def change_for_miss(user):
     """
 
     print(user.Days_since_start - user.Last_day_reported)
-    if (user.Days_since_start - user.Last_day_reported) > 3:
-        if user.Days_since_activty_start + 3 % 14 >= 3:
+    if (user.Days_since_start - user.Last_day_reported) > 3:  # check if user missed 3 days by seeing if current day is
+        # three days after the last report
+        if user.Days_since_activty_start + 3 % 14 >= 3:  #Check if there are more than 3 days remaining in program
             change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
                              value=random.choice(["yes", "no"]))
-        else:
+        else:  #Turn off intervention if there is a responce
             change_condition(studyId=user.studyId, attribute="settings.{}".format("selfCompassion"),
                              value="no")
             # question_to_server()
