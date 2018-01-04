@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'jace.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
+        'NAME': 'george',
         "USER": 'postgres',
         'PASSWORD':"",
         'HOST': "jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com",
