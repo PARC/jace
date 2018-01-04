@@ -102,7 +102,7 @@ DATABASES = {
         'NAME': 'postgres',
         "USER": 'kphjace2018',
         'PASSWORD': "",
-        'HOST': "jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com",
+        'HOST': "13.1.100.161",
         'PORT': "5432",
     }
 }
