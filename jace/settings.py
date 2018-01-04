@@ -101,8 +101,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
         "USER": 'kphjace2018',
-        'PASSWORD': "",
-        'HOST': "13.1.100.161",
+        'PASSWORD': "can\'t.add.numbers",
+        'HOST': "jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com",
         'PORT': "5432",
     }
 }
