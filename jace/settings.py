@@ -102,8 +102,8 @@ DATABASES = {
         'NAME': 'postgres',
         "USER": 'postgres',
         'PASSWORD':"",
-        'HOST': os.environ['POSTGRES'].split(':')[0],
-        'PORT': os.environ['POSTGRES'].split(':')[1],
+        'HOST': "jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com",
+        'PORT': "5432",
     }
 }
 
@@ -145,6 +145,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-pool = ConnectionPool(host=os.environ['REDIS'].split(":")[0], port=os.environ['REDIS'].split(":")[1],
-                      max_connections=20)
-HUEY = RedisHuey('jace', connection_pool=pool)
+# pool = ConnectionPool(host=os.environ['REDIS'].split(":")[0], port=os.environ['REDIS'].split(":")[1],
+#                       max_connections=20)
+HUEY = RedisHuey('jace')
