@@ -103,7 +103,7 @@ DATABASES = {
         "USER": 'kphjace2018',
         'PASSWORD': "can\'t.add.numbers",
         'HOST': "jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com",
-        'PORT': "5268",
+        'PORT': "5432",
     }
 }
 
