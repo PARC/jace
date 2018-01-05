@@ -1,5 +1,6 @@
 #Dockerfile for Jace
 #Created by Joel Schooler
+# Copyright Palo Alto Research Center 2017,2018
 
 
 FROM jfloff/alpine-python:latest
