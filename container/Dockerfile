@@ -9,4 +9,5 @@ WORKDIR /jace
 #Contains all setup for python and dependencies.
 RUN sh setup.sh
 #exposing port 8000
+EXPOSE 8888
 EXPOSE 8000
