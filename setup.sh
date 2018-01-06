@@ -2,9 +2,9 @@
 apk update
 apk add py3-psycopg2
 pip3 install -r requirements.txt
-python3 manage.py makemigrations
-python3 manage.py makemigrations user_model
-python3 manage.py migrate
-python3 manage.py test user_model
+python manage.py makemigrations
+python manage.py makemigrations user_model
+python manage.py migrate
+python manage.py test user_model
 
 
