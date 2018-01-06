@@ -8,5 +8,5 @@ WORKDIR /jace
 #Contains all setup for python and dependencies.
 RUN sh setup.sh
 EXPOSE 8000
-RUN ./run_local
-ENTRYPOINT /jace
+WORKDIR /jace
+ENTRYPOINT ./run_local
