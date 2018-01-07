@@ -10,5 +10,5 @@ RUN sh setup.sh
 EXPOSE 8000
 WORKDIR /jace
 RUN ./run_local
-ENTRYPOINT ["/usr/bin/dumb-init"]
+ENTRYPOINT ["/usr/bin/dumb-init","./run_local"]
 CMD ["python"]
