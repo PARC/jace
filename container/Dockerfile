@@ -18,4 +18,4 @@ RUN ./run_local
 
 #from Dockerfile of alpine-python
 ENTRYPOINT ["/usr/bin/dumb-init","./run_local"]
-CMD ["python"]
+CMD ["./run_local"]

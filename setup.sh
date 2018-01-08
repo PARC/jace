@@ -1,4 +1,5 @@
 #!/bin/bash
+#Sets up jace
 apk update
 apk add libpq-dev python3-dev
 apk add postgresql-server-dev-all
