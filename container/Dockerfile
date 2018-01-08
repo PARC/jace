@@ -3,8 +3,14 @@
 #Copyright PARC 2016-17
 
 #Get alpine-python
-FROM jfloff/alpine-python:latest
+FROM alpine:latest
 #get jace
+
+
+RUN apk update
+RUN apk add python3
+RUN apk add gcc
+RUN apk add git
 RUN git clone https://docjoel:alpha1beta2\)@github.com/PARC/jace.git
 #change directory to jace
 WORKDIR /jace
@@ -16,6 +22,4 @@ EXPOSE 8000
 #run server
 RUN ./run_local
 
-#from Dockerfile of alpine-python
-ENTRYPOINT ["/usr/bin/dumb-init","./run_local"]
-CMD ["./run_local"]
+ENTRYPOINT ["./run_local"]
