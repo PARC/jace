@@ -24,4 +24,4 @@ EXPOSE 8000
 RUN ./run_local
 
 ENTRYPOINT ["./run_local"]
-CMD ["python"]
+
