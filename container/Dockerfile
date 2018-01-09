@@ -23,4 +23,5 @@ EXPOSE 8000
 #run server
 RUN ./run_local
 
-ENTRYPOINT ["./run_local","python"]
+ENTRYPOINT ["./run_local"]
+CMD ["python"]
