@@ -21,7 +21,6 @@ RUN sh setup.sh
 EXPOSE 8000
 
 #run server
-RUN ./run_local
 
 ENTRYPOINT ["./run_local"]
 
