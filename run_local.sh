@@ -1,5 +1,4 @@
-#!/bin/sh
-#
+#!/bin/bash
 kill $(ps aux | grep 'gunicorn' | awk '{print $1}')
 nohup gunicorn jace.wsgi -t 300 -b 0.0.0.0:8000 > /var/log/jace &
 
