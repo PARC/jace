@@ -146,6 +146,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# pool = ConnectionPool(host=os.environ['REDIS'].split(":")[0], port=os.environ['REDIS'].split(":")[1],
-#                       max_connections=20)
+pool = ConnectionPool(port=6379, max_connections=20)
 HUEY = RedisHuey('jace')

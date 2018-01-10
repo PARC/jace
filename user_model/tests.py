@@ -2,7 +2,7 @@
 
 # Create your tests here.
 import datetime
-
+import redis
 from django.test import TestCase
 from django.utils import timezone
 from communications.models import *
@@ -228,3 +228,13 @@ Answered = models.BooleanField()"""
 
             except(KeyError):
                 pass
+
+    def is_redis_available(self):
+        # ... get redis connection here, or pass it in. up to you.
+        try:
+            rs = redis.Redis(port=6379)
+            rs.get(None)  # getting None returns None or throws an exception
+        except (redis.exceptions.ConnectionError,
+                redis.exceptions.BusyLoadingError):
+            return False
+        return True
