@@ -1,5 +1,5 @@
 #!/bin/sh
 #
 kill $(ps aux | grep 'gunicorn' | awk '{print $1}')
-gunicorn jace.wsgi -t 300 -b 0.0.0.0:8000 > /var/log/jace &
+gunicorn jace.wsgi -t 300 -b 0.0.0.0:8000 > /var/log/jace
 
