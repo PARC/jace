@@ -22,5 +22,5 @@ EXPOSE 8000
 
 #run server
 
-ENTRYPOINT ["./run_local"]
+ENTRYPOINT ["./run_jace.sh"]
 
