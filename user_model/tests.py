@@ -229,8 +229,9 @@ Answered = models.BooleanField()"""
             except(KeyError):
                 pass
 
-    def is_redis_available(self):
+    def test_redis_available(self):
         # ... get redis connection here, or pass it in. up to you.
+        print("testing redis")
         try:
             rs = redis.Redis(port=6379)
             rs.get(None)  # getting None returns None or throws an exception
