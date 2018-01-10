@@ -31,7 +31,7 @@ SECRET_KEY = 'f_^^jyfsh+lbu4wg-ugc2jwbsw(j^=5n^8y#br$f^b!ld3ocyd'
 DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'jacedb-dev.cobddoocz4f4.us-east-1.rds.amazonaws.com', "54.89.149.144",
-                 "jace-27a3db6e-1.d646c080.cont.dockerapp.io"]
+                 "jace-27a3db6e-1.d646c080.cont.dockerapp.io", "jace-27a3db6e-1", "https://cloud.docker.com"]
 
 
 # Application definition
