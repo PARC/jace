@@ -146,5 +146,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-pool = ConnectionPool(port=6379, max_connections=20)
+pool = ConnectionPool(host="", port=6379, max_connections=20)
 HUEY = RedisHuey('jace')

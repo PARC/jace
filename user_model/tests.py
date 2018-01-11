@@ -230,10 +230,9 @@ Answered = models.BooleanField()"""
                 pass
 
     def test_redis_available(self):
-        # ... get redis connection here, or pass it in. up to you.
+        rs = redis.Redis(port=6379)
         print("testing redis")
         try:
-            rs = redis.Redis(port=6379)
             rs.get(None)  # getting None returns None or throws an exception
         except (redis.exceptions.ConnectionError,
                 redis.exceptions.BusyLoadingError):
