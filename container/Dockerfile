@@ -12,7 +12,7 @@ RUN apk add python3
 RUN apk add gcc
 RUN apk add git
 #get jace
-RUN git clone https://docjoel:alpha1beta2\)@github.com/PARC/jace.git
+RUN git clone https://github.com/PARC/jace.git
 #change directory to jace
 WORKDIR /jace
 #Contains all setup for python and dependencies.
