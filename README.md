@@ -1,3 +1,5 @@
+_This is research code in its ugly and glorious form, used just for testing ideas. The complaint dept is located in /dev/null; otherwise, you are welcome to fix anything you have an issue with._
+
 # What is jace?
 
 Jace is Just Another Coaching Engine. HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded projects
