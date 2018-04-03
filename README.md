@@ -4,7 +4,7 @@ _This is research code in its ugly and glorious form, used just for testing idea
 
 Jace is Just Another Coaching Engine. HMC's Just Another Coaching Engine project serving NSF, NIH, and other funded projects
 
-##How does it work?
+## How does it work?
 
 Jace accepts incoming posts via its API and then disseminates that information into a user_model.
 The user_model consists of a User, Question, Answer, and Survey. The user_model also contains a rules function, this allows
