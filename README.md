@@ -47,7 +47,7 @@ user model, if so edit accordingly, and then run.
 ```
 sh run_jace.sh
 ```
-##Normal Start
+## Normal Start
 ```
 ./run_local
 ./manage.py run_huey
@@ -121,7 +121,8 @@ $ python manage.py flush
 ```
 
    ## server not running
-        try ./run_local
+        try 
+        $ ./run_local
         
     
 ## LICENSES
