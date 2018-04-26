@@ -18,6 +18,7 @@ This message is to turn on or off a question set. There is also the ability to s
 
 1. Make a container for alpine-linux
 2. Make a container for redis and postgres
+    A. Make sure postgres is setup with matching user name and passwords in settings.py
 3. Redis should be set to port 36379, postgres to 32768
 4. Set docker port in alpine-linux to 8000, and the published port to 8888
 5. In alpine-linux general make a new environmental setting called POSTGRES and set it to 32768
