@@ -21,7 +21,7 @@ This message is to turn on or off a question set. There is also the ability to s
 3. Redis should be set to port 36379, postgres to 32768
 4. Set docker port in alpine-linux to 8000, and the published port to 8888
 5. In alpine-linux general make a new environmental setting called POSTGRES and set it to 32768
-6. Also, in general, make a new environmental setting called REDIS and set it to 32769
+6. Also, in general, make a new environmental setting called REDIS and set it to 36379
 7. ```$ apk update```
 8. ```$ apk add python3, gcc, git```
 9. ```$ git clone http://github.com/parc/jace.git``` 
